@@ -19,11 +19,25 @@ const sources = [
   }
 ];
 
-const seedEvents = [
+function seedDatetime(daysFromToday, hour, minute = 0) {
+  const d = new Date();
+  d.setDate(d.getDate() + daysFromToday);
+  d.setHours(hour, minute, 0, 0);
+  return d.toISOString().slice(0, 19);
+}
+
+function seedDatetimeHoursFromNow(hoursFromNow) {
+  const d = new Date();
+  d.setTime(d.getTime() + hoursFromNow * 3600000);
+  return d.toISOString().slice(0, 19);
+}
+
+function getSeedEvents() {
+  return [
   {
     id: "seed-cw-1001",
     title: "First Friday Gallery Walk",
-    datetime: "2026-03-28T18:00:00",
+    datetime: seedDatetime(1, 18, 0),
     neighborhood: "Arts District",
     venue: "Broad Street Arts Corridor",
     category: "Visual Art",
@@ -43,7 +57,7 @@ const seedEvents = [
   {
     id: "seed-cw-1002",
     title: "Jackson Ward Jazz Night",
-    datetime: "2026-03-29T19:30:00",
+    datetime: seedDatetime(2, 19, 30),
     neighborhood: "Jackson Ward",
     venue: "Historic Theater RVA",
     category: "Music",
@@ -63,7 +77,7 @@ const seedEvents = [
   {
     id: "seed-eb-2001",
     title: "Scott's Addition Mural Tour",
-    datetime: "2026-03-28T11:00:00",
+    datetime: seedDatetime(1, 11, 0),
     neighborhood: "Scott's Addition",
     venue: "Workshop RVA",
     category: "Tour",
@@ -83,7 +97,7 @@ const seedEvents = [
   {
     id: "seed-rss-3001",
     title: "Community Poetry Open Mic",
-    datetime: "2026-03-30T18:30:00",
+    datetime: seedDatetime(3, 18, 30),
     neighborhood: "Church Hill",
     venue: "Neighborhood Arts Space",
     category: "Literary",
@@ -101,9 +115,29 @@ const seedEvents = [
     sourceUrl: "https://example.org/feed"
   },
   {
+    id: "seed-tonight-demo",
+    title: "Pop-up gallery (demo — next few hours)",
+    datetime: seedDatetimeHoursFromNow(2),
+    neighborhood: "RVA Downtown",
+    venue: "Demo venue",
+    category: "Visual Art",
+    cost: "free",
+    budgetTier: "free",
+    priceMax: 0,
+    numAttending: 2,
+    sponsored: false,
+    familyFriendly: true,
+    wheelchairAccessible: true,
+    firstTimeFriendly: true,
+    lat: 37.541,
+    lng: -77.433,
+    sourceName: "Bundled demo (offline fallback)",
+    sourceUrl: "https://calendar.richmondcultureworks.org/"
+  },
+  {
     id: "seed-cw-1003",
     title: "Family Clay Workshop",
-    datetime: "2026-04-01T14:00:00",
+    datetime: seedDatetime(5, 14, 0),
     neighborhood: "Southside",
     venue: "Cultural Center Annex",
     category: "Workshop",
@@ -120,13 +154,14 @@ const seedEvents = [
     sourceName: "Bundled demo (offline fallback)",
     sourceUrl: "https://calendar.richmondcultureworks.org/"
   }
-];
+  ];
+}
 
 const regionCentroids = {
   "Arts District": { lat: 37.5486, lng: -77.4456 },
   "Jackson Ward": { lat: 37.5512, lng: -77.436 },
   "Scott's Addition": { lat: 37.5658, lng: -77.4673 },
-  Church Hill: { lat: 37.5359, lng: -77.4098 },
+  "Church Hill": { lat: 37.5359, lng: -77.4098 },
   Southside: { lat: 37.5, lng: -77.49 },
   "RVA Downtown": { lat: 37.541, lng: -77.433 },
   "RVA Southside": { lat: 37.49, lng: -77.49 },
@@ -585,6 +620,9 @@ function renderEventCard(event) {
 }
 
 function renderHiddenGems() {
+  if (!hiddenGemsList) {
+    return;
+  }
   const pool = getFilteredEvents();
   const base = pool.length ? pool : getUpcomingEvents();
   const gems = getHiddenGems(base);
@@ -602,12 +640,20 @@ function renderHiddenGems() {
 function renderEvents() {
   const filtered = getFilteredEvents();
 
-  resultsMeta.textContent = `${filtered.length} event(s) found`;
-  eventsList.innerHTML = "";
-  surpriseBanner.innerHTML = "";
+  if (resultsMeta) {
+    resultsMeta.textContent = `${filtered.length} event(s) found`;
+  }
+  if (eventsList) {
+    eventsList.innerHTML = "";
+  }
+  if (surpriseBanner) {
+    surpriseBanner.innerHTML = "";
+  }
 
   if (filtered.length === 0) {
-    eventsList.innerHTML = "<p>No events found for current filters.</p>";
+    if (eventsList) {
+      eventsList.innerHTML = "<p>No events found for current filters.</p>";
+    }
     renderMap([]);
     renderPersonalizedMessage([]);
     renderHiddenGems();
@@ -617,7 +663,9 @@ function renderEvents() {
   filtered
     .sort((a, b) => toDate(a.datetime) - toDate(b.datetime))
     .forEach((event) => {
-      eventsList.appendChild(renderEventCard(event));
+      if (eventsList) {
+        eventsList.appendChild(renderEventCard(event));
+      }
     });
 
   renderMap(filtered);
@@ -628,11 +676,15 @@ function renderEvents() {
 function applyChatQuery(raw) {
   const q = raw.toLowerCase().trim();
   if (!q) {
-    chatHint.textContent = "";
+    if (chatHint) {
+      chatHint.textContent = "";
+    }
     return;
   }
 
-  chatHint.textContent = "";
+  if (chatHint) {
+    chatHint.textContent = "";
+  }
   filters.neighborhood = "all";
   filters.category = "all";
   filters.cost = "all";
@@ -714,23 +766,57 @@ function applyChatQuery(raw) {
     }
   }
 
-  neighborhoodFilter.value = filters.neighborhood;
-  categoryFilter.value = filters.category;
-  costFilter.value = filters.cost;
-  dateFilter.value = filters.date;
-  eqFamily.checked = filters.eqFamily;
-  eqWheelchair.checked = filters.eqWheelchair;
-  eqFirstTime.checked = filters.eqFirstTime;
+  if (neighborhoodFilter) {
+    neighborhoodFilter.value = filters.neighborhood;
+  }
+  if (categoryFilter) {
+    categoryFilter.value = filters.category;
+  }
+  if (costFilter) {
+    costFilter.value = filters.cost;
+  }
+  if (dateFilter) {
+    dateFilter.value = filters.date;
+  }
+  if (eqFamily) {
+    eqFamily.checked = filters.eqFamily;
+  }
+  if (eqWheelchair) {
+    eqWheelchair.checked = filters.eqWheelchair;
+  }
+  if (eqFirstTime) {
+    eqFirstTime.checked = filters.eqFirstTime;
+  }
 
-  chatHint.textContent =
-    hint ||
-    "Applied filters from your message (smart rules — works offline; swap in an API later for full AI).";
-  setTimeout(() => {
-    chatHint.textContent = "";
-  }, 6000);
+  if (chatHint) {
+    chatHint.textContent =
+      hint ||
+      "Applied filters from your message (smart rules — works offline; swap in an API later for full AI).";
+    setTimeout(() => {
+      if (chatHint) {
+        chatHint.textContent = "";
+      }
+    }, 6000);
+  }
 }
 
 function bindFilters() {
+  if (
+    !neighborhoodFilter ||
+    !categoryFilter ||
+    !costFilter ||
+    !dateFilter ||
+    !eventsList ||
+    !resetBtn
+  ) {
+    if (dataStatus) {
+      dataStatus.textContent =
+        "Error: page HTML is outdated. Use index.html from mvp-whats-on-rva with Build v3 in the header.";
+      dataStatus.className = "data-status data-status-demo";
+    }
+    return;
+  }
+
   neighborhoodFilter.addEventListener("change", (e) => {
     filters.neighborhood = e.target.value;
     if (filters.neighborhood !== "all") {
@@ -757,51 +843,67 @@ function bindFilters() {
     renderEvents();
   });
 
-  eqFamily.addEventListener("change", (e) => {
-    filters.eqFamily = e.target.checked;
-    renderEvents();
-  });
-  eqWheelchair.addEventListener("change", (e) => {
-    filters.eqWheelchair = e.target.checked;
-    renderEvents();
-  });
-  eqFirstTime.addEventListener("change", (e) => {
-    filters.eqFirstTime = e.target.checked;
-    renderEvents();
-  });
+  if (eqFamily) {
+    eqFamily.addEventListener("change", (e) => {
+      filters.eqFamily = e.target.checked;
+      renderEvents();
+    });
+  }
+  if (eqWheelchair) {
+    eqWheelchair.addEventListener("change", (e) => {
+      filters.eqWheelchair = e.target.checked;
+      renderEvents();
+    });
+  }
+  if (eqFirstTime) {
+    eqFirstTime.addEventListener("change", (e) => {
+      filters.eqFirstTime = e.target.checked;
+      renderEvents();
+    });
+  }
 
-  chatSearchBtn.addEventListener("click", () => {
-    applyChatQuery(chatInput.value);
-    renderEvents();
-  });
-  chatInput.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
+  if (chatSearchBtn && chatInput) {
+    chatSearchBtn.addEventListener("click", () => {
       applyChatQuery(chatInput.value);
       renderEvents();
-    }
-  });
+    });
+    chatInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        applyChatQuery(chatInput.value);
+        renderEvents();
+      }
+    });
+  }
 
-  surpriseBtn.addEventListener("click", () => {
-    const pool = getFilteredEvents();
-    const fallback = getUpcomingEvents();
-    const pickFrom = pool.length ? pool : fallback;
-    if (!pickFrom.length) {
-      surpriseBanner.textContent = "No events to pick from — relax filters.";
-      return;
-    }
-    const choice = pickFrom[Math.floor(Math.random() * pickFrom.length)];
-    surpriseBanner.innerHTML = `<strong>Surprise pick:</strong> ${escapeHtml(choice.title)} — ${formatDate(
-      choice.datetime
-    )} · <a href="${choice.sourceUrl}" target="_blank" rel="noreferrer">View listing</a>`;
-    const el = document.querySelector(`[data-event-id="${choice.id}"]`);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "center" });
-      el.classList.add("event-card-spotlight");
-      setTimeout(() => el.classList.remove("event-card-spotlight"), 2500);
-    }
-  });
+  if (surpriseBtn) {
+    surpriseBtn.addEventListener("click", () => {
+      const pool = getFilteredEvents();
+      const fallback = getUpcomingEvents();
+      const pickFrom = pool.length ? pool : fallback;
+      if (!pickFrom.length) {
+        if (surpriseBanner) {
+          surpriseBanner.textContent = "No events to pick from — relax filters.";
+        }
+        return;
+      }
+      const choice = pickFrom[Math.floor(Math.random() * pickFrom.length)];
+      if (!surpriseBanner) {
+        return;
+      }
+      surpriseBanner.innerHTML = `<strong>Surprise pick:</strong> ${escapeHtml(choice.title)} — ${formatDate(
+        choice.datetime
+      )} · <a href="${choice.sourceUrl}" target="_blank" rel="noreferrer">View listing</a>`;
+      const el = document.querySelector(`[data-event-id="${choice.id}"]`);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "center" });
+        el.classList.add("event-card-spotlight");
+        setTimeout(() => el.classList.remove("event-card-spotlight"), 2500);
+      }
+    });
+  }
 
-  tonightBtn.addEventListener("click", () => {
+  if (tonightBtn) {
+    tonightBtn.addEventListener("click", () => {
     filters.date = "weekend";
     dateFilter.value = "weekend";
 
@@ -847,15 +949,20 @@ function bindFilters() {
         renderEvents();
       }
     );
-  });
+    });
+  }
 
-  tonightRvaBtn.addEventListener("click", () => {
-    filters.date = "tonight6h";
-    dateFilter.value = "tonight6h";
-    renderEvents();
-    resultsMeta.textContent =
-      "Tonight in RVA: showing events starting in the next 6 hours (best with live CultureWorks data).";
-  });
+  if (tonightRvaBtn) {
+    tonightRvaBtn.addEventListener("click", () => {
+      filters.date = "tonight6h";
+      dateFilter.value = "tonight6h";
+      renderEvents();
+      if (resultsMeta) {
+        resultsMeta.textContent =
+          "Tonight in RVA: showing events starting in the next 6 hours (best with live CultureWorks data).";
+      }
+    });
+  }
 
   resetBtn.addEventListener("click", () => {
     filters.neighborhood = "all";
@@ -869,12 +976,24 @@ function bindFilters() {
     categoryFilter.value = "all";
     costFilter.value = "all";
     dateFilter.value = "all";
-    eqFamily.checked = false;
-    eqWheelchair.checked = false;
-    eqFirstTime.checked = false;
-    chatInput.value = "";
-    chatHint.textContent = "";
-    surpriseBanner.innerHTML = "";
+    if (eqFamily) {
+      eqFamily.checked = false;
+    }
+    if (eqWheelchair) {
+      eqWheelchair.checked = false;
+    }
+    if (eqFirstTime) {
+      eqFirstTime.checked = false;
+    }
+    if (chatInput) {
+      chatInput.value = "";
+    }
+    if (chatHint) {
+      chatHint.textContent = "";
+    }
+    if (surpriseBanner) {
+      surpriseBanner.innerHTML = "";
+    }
     renderEvents();
   });
 }
@@ -892,6 +1011,9 @@ function setupMap() {
 }
 
 function rebuildFilterOptions() {
+  if (!neighborhoodFilter || !categoryFilter) {
+    return;
+  }
   const neighborhoodValues = [...new Set(events.map((e) => e.neighborhood))].sort();
   const categories = [...new Set(events.map((e) => e.category))].sort();
   optionize(neighborhoodFilter, neighborhoodValues, true);
@@ -899,25 +1021,35 @@ function rebuildFilterOptions() {
 }
 
 async function init() {
-  dataStatus.textContent = "Loading events…";
-  setupMap();
-
   try {
-    events = await fetchCultureWorksEvents();
-    if (events.length === 0) {
-      throw new Error("No events returned");
+    if (dataStatus) {
+      dataStatus.textContent = "Loading events…";
     }
-    dataMode = "live";
-  } catch {
-    events = [...seedEvents];
-    dataMode = "demo";
-  }
+    setupMap();
 
-  setDataStatus();
-  rebuildFilterOptions();
-  bindFilters();
-  renderSources();
-  renderEvents();
+    try {
+      events = await fetchCultureWorksEvents();
+      if (events.length === 0) {
+        throw new Error("No events returned");
+      }
+      dataMode = "live";
+    } catch {
+      events = getSeedEvents();
+      dataMode = "demo";
+    }
+
+    setDataStatus();
+    rebuildFilterOptions();
+    bindFilters();
+    renderSources();
+    renderEvents();
+  } catch (err) {
+    if (dataStatus) {
+      dataStatus.textContent = `Error loading app: ${err?.message || err}. Open the browser console (F12) for details.`;
+      dataStatus.className = "data-status data-status-demo";
+    }
+    console.error(err);
+  }
 }
 
 init();
