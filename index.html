@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#1c1108">
+<title>RVA Stories</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ── DESIGN: Richmond broadsheet × activist zine
+   Bebas Neue    — display headlines (bold, condensed, vintage press)
+   Crimson Pro   — body text (editorial, warm, literary)
+   IBM Plex Mono — labels + data (functional, transparent)
+   Palette: newsprint cream · tobacco ink · brick red · Jackson Ward teal
+   Texture: CSS grain, ruled lines, offset borders, dashed strokes
+*/
+:root {
+  --ink:    #1c1108;
+  --ink2:   #3a2910;
+  --ink3:   #7a6040;
+  --ink4:   #b09070;
+  --cream:  #f5f0e3;
+  --cream2: #ede6d0;
+  --cream3: #e2d8be;
+  --brick:  #a8311a;
+  --brick-l:#f5e5e0;
+  --teal:   #1a5248;
+  --teal-l: #d8ede8;
+  --gold:   #c8901a;
+  --gold-l: #fdf3d8;
+  --rule:   rgba(28,17,8,.14);
+  --rule2:  rgba(28,17,8,.28);
+}
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+
+body {
+  font-family:'Crimson Pro',Georgia,serif;
+  background-color:var(--cream);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.042'/%3E%3C/svg%3E");
+  color:var(--ink); min-height:100vh; font-size:16px; line-height:1.55;
+}
+
+/* MASTHEAD */
+.masthead { background:var(--ink); border-bottom:3px solid var(--brick); position:sticky; top:0; z-index:200; }
+.masthead-inner { max-width:720px; margin:0 auto; padding:0 16px; display:flex; align-items:stretch; }
+.brand { display:flex; align-items:center; gap:12px; padding:10px 16px 10px 0; flex:1; border-right:1px solid rgba(255,255,255,.08); margin-right:16px; }
+.brand-name { font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:1; color:white; letter-spacing:1px; }
+.brand-divider { width:2px; height:38px; background:var(--brick); flex-shrink:0; }
+.brand-sub { font-family:'IBM Plex Mono',monospace; font-size:9px; color:rgba(255,255,255,.38); line-height:1.6; letter-spacing:.2px; }
+.masthead-status { display:flex; align-items:center; gap:6px; font-family:'IBM Plex Mono',monospace; font-size:10px; color:rgba(255,255,255,.38); padding:10px 0; }
+.live-dot { width:6px; height:6px; border-radius:50%; background:#4ade80; animation:blink 2s infinite; flex-shrink:0; }
+.live-dot.dead { background:#f87171; animation:none; }
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.offline-bar { display:none; background:var(--gold); color:var(--ink); font-family:'IBM Plex Mono',monospace; font-size:11px; text-align:center; padding:4px; }
+body.offline .offline-bar { display:block; }
+
+/* NAV TABS */
+.nav { background:var(--cream2); border-bottom:2px solid var(--ink); overflow-x:auto; -ms-overflow-style:none; scrollbar-width:none; }
+.nav::-webkit-scrollbar { display:none; }
+.nav-inner { max-width:720px; margin:0 auto; display:flex; }
+.nav-tab { flex:1; min-width:80px; padding:0; border:none; background:transparent; cursor:pointer; font-family:inherit; border-right:1px solid var(--rule2); position:relative; transition:background .12s; }
+.nav-tab:last-child { border-right:none; }
+.nav-tab-in { padding:9px 6px 11px; display:flex; flex-direction:column; align-items:center; gap:2px; }
+.nav-tab .ico { font-size:14px; }
+.nav-tab .lbl { font-family:'IBM Plex Mono',monospace; font-size:9px; text-transform:uppercase; letter-spacing:.8px; color:var(--ink3); white-space:nowrap; }
+.nav-tab.on { background:var(--ink); }
+.nav-tab.on .lbl { color:rgba(255,255,255,.65); }
+.nav-tab.on::after { content:''; position:absolute; bottom:-5px; left:50%; transform:translateX(-50%); border:5px solid transparent; border-top-color:var(--ink); }
+
+/* PANELS */
+.panel { display:none; max-width:720px; margin:0 auto; padding:20px 16px 120px; }
+.panel.on { display:block; }
+
+/* TYPOGRAPHY */
+.hed { font-family:'Bebas Neue',sans-serif; }
+.mono { font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--ink3); text-transform:uppercase; letter-spacing:.8px; }
+.rule-row { display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+.rule-line { flex:1; height:2px; background:var(--ink); }
+.rule-title { font-family:'Bebas Neue',sans-serif; font-size:13px; letter-spacing:2px; color:var(--ink3); white-space:nowrap; }
+.note { font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--ink3); background:var(--cream2); padding:9px 12px; border-left:3px solid var(--rule2); line-height:1.6; margin-top:10px; }
+
+/* SOURCES BAR */
+.sources-bar { border:1.5px solid var(--rule2); background:white; padding:10px 14px; display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:8px; }
+.src-pills { display:flex; gap:6px; flex-wrap:wrap; }
+.src { font-family:'IBM Plex Mono',monospace; font-size:10px; border-radius:2px; padding:3px 8px; }
+.src.cw  { background:var(--teal-l); color:var(--teal); }
+.src.eb  { background:var(--brick-l); color:var(--brick); }
+.src.rss { background:var(--gold-l); color:var(--gold); }
+.src.off { background:var(--cream3); color:var(--ink4); }
+.refresh { font-family:'IBM Plex Mono',monospace; font-size:10px; padding:4px 10px; border:1px solid var(--rule2); background:transparent; cursor:pointer; color:var(--ink3); border-radius:2px; letter-spacing:.5px; }
+.refresh:hover { background:var(--cream3); }
+
+/* FILTER CHIPS */
+.filters { display:flex; gap:5px; overflow-x:auto; padding-bottom:4px; margin-bottom:14px; -ms-overflow-style:none; scrollbar-width:none; }
+.filters::-webkit-scrollbar { display:none; }
+.fchip { flex-shrink:0; padding:5px 12px; font-family:'IBM Plex Mono',monospace; font-size:10px; border:1px solid var(--rule2); background:white; cursor:pointer; color:var(--ink3); border-radius:2px; transition:all .12s; white-space:nowrap; }
+.fchip.on { background:var(--ink); color:var(--cream); border-color:var(--ink); }
+
+/* EVENTS */
+.ev-list { display:flex; flex-direction:column; }
+.ev { display:flex; overflow:hidden; border-bottom:1px solid var(--rule); text-decoration:none; color:inherit; transition:background .12s; background:white; cursor:pointer; }
+.ev:first-child { border-top:1px solid var(--rule); }
+.ev:hover { background:var(--cream2); }
+.ev-cal { width:58px; flex-shrink:0; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:14px 6px; border-right:1px solid var(--rule); background:var(--cream2); }
+.ev-cal-mo { font-family:'IBM Plex Mono',monospace; font-size:8px; text-transform:uppercase; letter-spacing:1px; color:var(--ink3); }
+.ev-cal-d { font-family:'Bebas Neue',sans-serif; font-size:32px; line-height:1; color:var(--ink); }
+.ev-cal-dow { font-family:'IBM Plex Mono',monospace; font-size:8px; color:var(--ink4); }
+.ev-body { flex:1; padding:12px 14px; min-width:0; }
+.ev-hed { font-size:16px; font-weight:600; line-height:1.25; margin-bottom:3px; }
+.ev-dek { font-size:13px; color:var(--ink3); margin-bottom:6px; font-style:italic; }
+.ev-meta { display:flex; gap:5px; flex-wrap:wrap; align-items:center; }
+.badge { font-family:'IBM Plex Mono',monospace; font-size:9px; padding:2px 6px; border-radius:2px; text-transform:uppercase; letter-spacing:.4px; }
+.badge.visual   { background:#f8e8e8; color:#6a1212; }
+.badge.music    { background:#e8ecf8; color:#1a2870; }
+.badge.theater  { background:#fdf3e0; color:#6a3800; }
+.badge.history  { background:#f0e8f8; color:#42106a; }
+.badge.community{ background:var(--teal-l); color:var(--teal); }
+.badge.free     { background:var(--teal); color:white; }
+.ev-src { font-family:'IBM Plex Mono',monospace; font-size:9px; color:var(--ink4); }
+.ev-arr { display:flex; align-items:center; padding:0 12px; color:var(--ink4); font-size:20px; flex-shrink:0; }
+.skel { background:linear-gradient(90deg,var(--cream2) 25%,var(--cream3) 50%,var(--cream2) 75%); background-size:200%; animation:shimmer 1.3s infinite; border-radius:2px; }
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+/* MAP */
+.map-box { border:1.5px solid var(--rule2); background:white; position:relative; overflow:hidden; margin-bottom:14px; }
+.map-canvas { width:100%; height:260px; display:block; }
+.map-tip { position:absolute; background:var(--ink); color:var(--cream); font-family:'IBM Plex Mono',monospace; font-size:10px; padding:5px 10px; border-left:3px solid var(--brick); pointer-events:none; opacity:0; transition:opacity .12s; white-space:nowrap; z-index:10; }
+.map-legend { padding:8px 14px; border-top:1px solid var(--rule); display:flex; gap:12px; flex-wrap:wrap; }
+.leg { display:flex; align-items:center; gap:5px; font-family:'IBM Plex Mono',monospace; font-size:9px; color:var(--ink3); text-transform:uppercase; letter-spacing:.5px; }
+.leg-sq { width:8px; height:8px; border-radius:1px; }
+.d-card { display:flex; gap:12px; align-items:center; padding:13px 14px; border-bottom:1px solid var(--rule); background:white; }
+.d-card:first-child { border-top:1px solid var(--rule); }
+.d-ico { font-size:22px; flex-shrink:0; }
+.d-name { font-family:'Bebas Neue',sans-serif; font-size:22px; line-height:1; margin-bottom:3px; }
+.d-sub { font-size:14px; color:var(--ink3); font-style:italic; }
+.d-ct { font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--ink4); margin-left:auto; flex-shrink:0; }
+
+/* STORY PORTAL */
+.story-hero { background:var(--ink); padding:20px; border-left:4px solid var(--brick); margin-bottom:16px; }
+.story-hero-hed { font-family:'Bebas Neue',sans-serif; font-size:34px; color:white; line-height:1; margin-bottom:8px; letter-spacing:.5px; }
+.story-hero-body { font-size:15px; color:rgba(255,255,255,.58); line-height:1.6; font-style:italic; }
+.block { border:1.5px solid var(--rule2); background:white; margin-bottom:14px; }
+.block-head { display:flex; align-items:center; gap:10px; padding:11px 14px; border-bottom:1px solid var(--rule); background:var(--cream2); }
+.block-ico { font-size:16px; }
+.block-title { font-family:'Bebas Neue',sans-serif; font-size:19px; letter-spacing:.5px; }
+.block-sub { font-family:'IBM Plex Mono',monospace; font-size:9px; color:var(--ink3); margin-left:auto; letter-spacing:.3px; }
+.block-body { padding:14px; }
+.consent-row { display:flex; gap:12px; align-items:flex-start; padding:10px 0; border-bottom:1px solid var(--rule); cursor:pointer; }
+.consent-row:last-child { border:none; padding-bottom:0; }
+.cbox { width:18px; height:18px; border:1.5px solid var(--rule2); flex-shrink:0; margin-top:2px; display:flex; align-items:center; justify-content:center; font-size:11px; transition:all .12s; border-radius:2px; }
+.cbox.on { background:var(--teal); border-color:var(--teal); color:white; }
+.c-lbl { font-size:14px; font-weight:600; line-height:1.3; }
+.c-sub { font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--ink3); margin-top:3px; line-height:1.4; }
+select { width:100%; padding:9px 12px; font-size:15px; font-family:'Crimson Pro',serif; border:1px solid var(--rule2); background:var(--cream); color:var(--ink); appearance:none; cursor:pointer; margin-bottom:10px; border-radius:2px; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%237a6040'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 12px center; }
+select:focus { outline:none; border-color:var(--teal); }
+
+/* RECORDER */
+.recorder { border:2px dashed var(--rule2); padding:24px; text-align:center; transition:all .2s; margin-bottom:10px; }
+.recorder.live { border-color:var(--brick); border-style:solid; background:var(--brick-l); }
+.rec-wrap { display:flex; justify-content:center; margin-bottom:12px; }
+.rec-btn { width:66px; height:66px; border-radius:50%; background:var(--brick); border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 0 0 0 rgba(168,49,26,.4); transition:transform .12s; }
+.rec-btn:hover { transform:scale(1.05); }
+.rec-btn.pulsing { animation:rpulse 1.1s infinite; }
+@keyframes rpulse{0%,100%{box-shadow:0 0 0 0 rgba(168,49,26,.4)}50%{box-shadow:0 0 0 14px rgba(168,49,26,0)}}
+.rec-circle { width:26px; height:26px; border-radius:50%; background:white; transition:border-radius .15s; }
+.rec-circle.sq { border-radius:5px; }
+.rec-timer { font-family:'Bebas Neue',sans-serif; font-size:36px; color:var(--brick); display:none; margin-bottom:4px; letter-spacing:2px; }
+.wave { height:32px; display:none; justify-content:center; align-items:center; gap:3px; margin-bottom:8px; }
+.wb { width:3px; border-radius:2px; background:var(--brick); }
+.rec-lbl { font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink3); letter-spacing:.3px; }
+.rec-err { font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--brick); background:var(--brick-l); padding:8px 12px; border-left:3px solid var(--brick); display:none; margin-top:8px; }
+.audio-out { margin-top:12px; display:none; }
+.audio-out audio { width:100%; }
+
+/* TEXT INPUT */
+.prompts { display:flex; gap:5px; flex-wrap:wrap; margin-bottom:10px; }
+.prompt { padding:5px 11px; font-family:'IBM Plex Mono',monospace; font-size:10px; border:1px solid var(--rule2); background:var(--cream); cursor:pointer; color:var(--ink3); border-radius:2px; transition:all .12s; line-height:1.4; }
+.prompt:hover { background:var(--cream3); border-color:var(--ink); color:var(--ink); }
+.story-ta { width:100%; min-height:110px; padding:12px; font-family:'Crimson Pro',serif; font-size:16px; line-height:1.6; border:1px solid var(--rule2); background:var(--cream); color:var(--ink); resize:vertical; border-radius:2px; transition:border-color .15s; }
+.story-ta:focus { outline:none; border-color:var(--teal); background:white; }
+.story-ta::placeholder { color:var(--ink4); font-style:italic; }
+.submit-row { display:flex; gap:8px; align-items:center; margin-top:10px; }
+.btn-submit { flex:1; padding:13px 20px; font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:1px; background:var(--ink); color:var(--cream); border:none; cursor:pointer; transition:background .15s; border-radius:2px; }
+.btn-submit:hover { background:var(--ink2); }
+.btn-submit:disabled { background:var(--ink4); cursor:not-allowed; }
+.char-ct { font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--ink4); white-space:nowrap; }
+.toast { display:none; background:var(--teal); color:white; padding:14px 16px; margin-top:12px; font-size:15px; line-height:1.5; border-left:4px solid #0d3028; }
+.toast.show { display:block; animation:drop .3s; }
+@keyframes drop{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.ai-result { display:none; margin-top:10px; padding:10px 12px; background:var(--teal-l); border-left:3px solid var(--teal); }
+.ai-result-label { font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.5px; color:var(--teal); display:block; margin-bottom:6px; }
+
+/* INSIGHTS */
+.ai-flag { font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--gold); background:var(--gold-l); padding:4px 10px; border:1px solid rgba(200,144,26,.3); display:inline-block; margin-bottom:14px; letter-spacing:.3px; }
+.metrics { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule2); margin-bottom:14px; }
+.metric { background:white; padding:16px 14px; text-align:center; }
+.metric-n { font-family:'Bebas Neue',sans-serif; font-size:46px; line-height:1; color:var(--ink); }
+.metric-lbl { font-family:'IBM Plex Mono',monospace; font-size:9px; color:var(--ink3); text-transform:uppercase; letter-spacing:.8px; margin-top:2px; }
+.metric-d { font-family:'IBM Plex Mono',monospace; font-size:9px; color:var(--teal); margin-top:3px; }
+.i-block { border:1px solid var(--rule2); background:white; margin-bottom:14px; }
+.i-block-hed { padding:10px 14px; border-bottom:1px solid var(--rule); background:var(--cream2); }
+.i-block-title { font-family:'Bebas Neue',sans-serif; font-size:24px; letter-spacing:.5px; }
+.i-block-sub { font-family:'IBM Plex Mono',monospace; font-size:9px; color:var(--ink3); display:block; margin-top:1px; letter-spacing:.3px; }
+.i-block-body { padding:14px; }
+.theme-item { margin-bottom:13px; }
+.theme-item:last-child { margin:0; }
+.theme-row { display:flex; justify-content:space-between; margin-bottom:4px; }
+.theme-name { font-size:15px; font-weight:600; }
+.theme-n { font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--ink3); }
+.theme-track { height:5px; background:var(--cream3); }
+.theme-fill { height:100%; width:0; transition:width 1s cubic-bezier(.4,0,.2,1); }
+.s-card { border-bottom:1px solid var(--rule); padding:13px 14px; }
+.s-card:last-child { border:none; }
+.s-top { display:flex; justify-content:space-between; margin-bottom:7px; }
+.s-hood { font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:500; padding:2px 7px; text-transform:uppercase; letter-spacing:.5px; }
+.s-yrs { font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--ink4); }
+.s-quote { font-size:15px; line-height:1.6; font-style:italic; color:var(--ink2); }
+.s-pills { display:flex; gap:4px; flex-wrap:wrap; margin-top:7px; }
+.s-pill { font-family:'IBM Plex Mono',monospace; font-size:9px; padding:2px 6px; background:var(--cream2); color:var(--ink3); letter-spacing:.3px; }
+.export-btns { display:flex; gap:6px; flex-wrap:wrap; margin-top:12px; }
+.btn-exp { padding:9px 14px; border:1px solid var(--rule2); background:var(--cream); font-family:'IBM Plex Mono',monospace; font-size:10px; cursor:pointer; color:var(--ink3); border-radius:2px; letter-spacing:.3px; }
+.btn-exp:hover { background:var(--cream3); }
+.email-row { display:flex; gap:6px; margin-top:10px; }
+.email-in { flex:1; padding:9px 12px; border:1px solid var(--rule2); font-family:'Crimson Pro',serif; font-size:15px; background:var(--cream); color:var(--ink); border-radius:2px; }
+.email-in:focus { outline:none; border-color:var(--teal); }
+.btn-sub { padding:9px 16px; background:var(--teal); color:white; border:none; font-family:'Bebas Neue',sans-serif; font-size:20px; letter-spacing:1px; cursor:pointer; white-space:nowrap; border-radius:2px; }
+.btn-sub:hover { background:#133d35; }
+hr { border:none; border-top:1px solid var(--rule); margin:18px 0; }
+.empty { text-align:center; padding:40px 20px; font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink3); }
+</style>
+</head>
+<body>
+
+<div class="offline-bar">⚠ OFFLINE MODE — showing cached data</div>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="brand">
+      <div class="brand-name">RVA Stories</div>
+      <div class="brand-divider"></div>
+      <div class="brand-sub">Richmond's arts,<br>culture &amp; living history</div>
+    </div>
+    <div class="masthead-status">
+      <span class="live-dot" id="live-dot"></span>
+      <span id="live-txt">connecting</span>
+    </div>
+  </div>
+</header>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <button class="nav-tab on" onclick="showTab('events',this)">
+      <div class="nav-tab-in"><span class="ico">🗓</span><span class="lbl">Events</span></div>
+    </button>
+    <button class="nav-tab" onclick="showTab('map',this)">
+      <div class="nav-tab-in"><span class="ico">🗺</span><span class="lbl">Districts</span></div>
+    </button>
+    <button class="nav-tab" onclick="showTab('story',this)">
+      <div class="nav-tab-in"><span class="ico">🎙</span><span class="lbl">Your Story</span></div>
+    </button>
+    <button class="nav-tab" onclick="showTab('insights',this)">
+      <div class="nav-tab-in"><span class="ico">📊</span><span class="lbl">Insights</span></div>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══ EVENTS ═══ -->
+<div id="panel-events" class="panel on">
+  <div class="sources-bar">
+    <div class="src-pills">
+      <span class="src cw" id="pill-cw">● CultureWorks Localist API</span>
+      <span class="src eb" id="pill-eb">● Eventbrite</span>
+      <span class="src rss" id="pill-rss">● Style Weekly RSS</span>
+    </div>
+    <button class="refresh" onclick="loadEvents()">↻ REFRESH</button>
+  </div>
+  <div class="filters" id="filter-bar">
+    <button class="fchip on" onclick="setFilter(this,'all')">ALL</button>
+    <button class="fchip" onclick="setFilter(this,'free')">FREE</button>
+    <button class="fchip" onclick="setFilter(this,'music')">MUSIC</button>
+    <button class="fchip" onclick="setFilter(this,'visual')">VISUAL ARTS</button>
+    <button class="fchip" onclick="setFilter(this,'theater')">THEATER</button>
+    <button class="fchip" onclick="setFilter(this,'history')">HISTORY</button>
+    <button class="fchip" onclick="setFilter(this,'scotts')">SCOTT'S ADDITION</button>
+    <button class="fchip" onclick="setFilter(this,'jackson')">JACKSON WARD</button>
+    <button class="fchip" onclick="setFilter(this,'fan')">THE FAN</button>
+    <button class="fchip" onclick="setFilter(this,'church')">CHURCH HILL</button>
+  </div>
+  <div class="rule-row"><div class="rule-line"></div><div class="rule-title">Upcoming this week</div><div class="rule-line"></div></div>
+  <div class="ev-list" id="ev-list">
+    <div class="ev" style="pointer-events:none"><div class="ev-cal" style="opacity:.25"><div class="ev-cal-d">—</div></div><div class="ev-body" style="display:flex;flex-direction:column;gap:9px;padding:18px 14px"><div class="skel" style="height:13px;width:60%"></div><div class="skel" style="height:10px;width:38%"></div></div></div>
+    <div class="ev" style="pointer-events:none"><div class="ev-cal" style="opacity:.25"><div class="ev-cal-d">—</div></div><div class="ev-body" style="display:flex;flex-direction:column;gap:9px;padding:18px 14px"><div class="skel" style="height:13px;width:50%"></div><div class="skel" style="height:10px;width:30%"></div></div></div>
+    <div class="ev" style="pointer-events:none"><div class="ev-cal" style="opacity:.25"><div class="ev-cal-d">—</div></div><div class="ev-body" style="display:flex;flex-direction:column;gap:9px;padding:18px 14px"><div class="skel" style="height:13px;width:70%"></div><div class="skel" style="height:10px;width:42%"></div></div></div>
+  </div>
+  <div class="note" style="margin-top:14px">DATA TRANSPARENCY — Pulls from CultureWorks Localist API, Eventbrite, and Style Weekly RSS. Coverage is not comprehensive — neighborhoods underrepresented in these systems may have fewer listings. We acknowledge this gap.</div>
+  <hr>
+  <div class="rule-row" style="margin-bottom:10px"><div class="rule-line"></div><div class="rule-title">Weekly arts digest</div><div class="rule-line"></div></div>
+  <p style="font-size:14px;color:var(--ink3);margin-bottom:10px;font-style:italic">A free Sunday email with the week's Richmond arts highlights — no spam.</p>
+  <div class="email-row">
+    <input class="email-in" type="email" id="alert-email" placeholder="your@email.com">
+    <button class="btn-sub" onclick="subscribeAlerts()">Subscribe</button>
+  </div>
+  <div id="alert-ok" style="display:none;margin-top:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--teal)">✓ SUBSCRIBED — first digest arrives Sunday.</div>
+</div>
+
+<!-- ═══ MAP ═══ -->
+<div id="panel-map" class="panel">
+  <div class="rule-row"><div class="rule-line"></div><div class="rule-title">Arts &amp; cultural districts</div><div class="rule-line"></div></div>
+  <div class="map-box">
+    <canvas class="map-canvas" id="map-canvas" width="680" height="260"></canvas>
+    <div class="map-tip" id="map-tip"></div>
+    <div class="map-legend">
+      <div class="leg"><div class="leg-sq" style="background:#6a1212"></div>Visual</div>
+      <div class="leg"><div class="leg-sq" style="background:#1a2870"></div>Music</div>
+      <div class="leg"><div class="leg-sq" style="background:#6a3800"></div>Theater</div>
+      <div class="leg"><div class="leg-sq" style="background:#42106a"></div>History</div>
+      <div class="leg"><div class="leg-sq" style="background:#1a5248"></div>Multi</div>
+    </div>
+  </div>
+  <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink3);margin-bottom:14px;line-height:1.6">TAP A PIN to see venue details. Source: CultureWorks &amp; City open data. Gaps labeled — not all venues represented.</p>
+  <div class="rule-row" style="margin-bottom:10px"><div class="rule-line"></div><div class="rule-title">District index</div><div class="rule-line"></div></div>
+  <div id="district-list"></div>
+</div>
+
+<!-- ═══ STORY ═══ -->
+<div id="panel-story" class="panel">
+  <div class="story-hero">
+    <div class="story-hero-hed">Your story belongs to Richmond</div>
+    <div class="story-hero-body">Long-time residents — especially those whose neighborhoods are changing fast — hold histories that risk being lost forever. Speak, write, or type your memory.</div>
+  </div>
+
+  <div class="block" style="border-left:4px solid var(--teal)">
+    <div class="block-head"><span class="block-ico">🔒</span><span class="block-title">Your privacy, your terms</span><span class="block-sub">SET BEFORE CAPTURE</span></div>
+    <div class="block-body">
+      <div class="consent-row" onclick="toggleConsent('c1')">
+        <div class="cbox on" id="c1">✓</div>
+        <div><div class="c-lbl">Share with community researchers</div><div class="c-sub">May inform City planning reports. Your name never used without a separate explicit step.</div></div>
+      </div>
+      <div class="consent-row" onclick="toggleConsent('c2')">
+        <div class="cbox" id="c2"></div>
+        <div><div class="c-lbl">Preserve in Richmond oral history archive</div><div class="c-sub">Partnered with the Valentine Museum &amp; Black History Museum of Virginia.</div></div>
+      </div>
+      <div class="consent-row" onclick="toggleConsent('c3')">
+        <div class="cbox" id="c3"></div>
+        <div><div class="c-lbl">Anonymous only — no neighborhood data retained</div><div class="c-sub">Broad themes may appear in aggregate reports. No location data stored.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-head"><span class="block-ico">📍</span><span class="block-title">Your neighborhood</span><span class="block-sub">OPTIONAL</span></div>
+    <div class="block-body">
+      <select id="nbhood">
+        <option value="">Prefer not to say</option>
+        <option>Jackson Ward</option><option>Church Hill</option><option>Scott's Addition</option>
+        <option>The Fan</option><option>Gilpin Court</option><option>Northside</option>
+        <option>Southside</option><option>Manchester</option><option>Shockoe Bottom</option>
+        <option>Oregon Hill</option><option>Carver</option><option>Highland Park</option><option>Other</option>
+      </select>
+      <div class="mono" style="margin-bottom:6px">How long in Richmond?</div>
+      <select id="duration">
+        <option value="">Prefer not to say</option>
+        <option>Less than 5 years</option><option>5–10 years</option><option>10–20 years</option>
+        <option>20–30 years</option><option>More than 30 years</option><option>My whole life</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-head"><span class="block-ico">🎙</span><span class="block-title">Record your voice</span><span class="block-sub">TAP ONCE · TAP AGAIN TO STOP</span></div>
+    <div class="block-body">
+      <div class="recorder" id="rec-zone">
+        <div class="rec-wrap">
+          <button class="rec-btn" id="rec-btn" onclick="toggleRecording()" aria-label="Record">
+            <div class="rec-circle" id="rec-circle"></div>
+          </button>
+        </div>
+        <div class="rec-timer" id="rec-timer">0:00</div>
+        <div class="wave" id="wave">
+          <div class="wb" style="height:8px"></div><div class="wb" style="height:18px"></div>
+          <div class="wb" style="height:12px"></div><div class="wb" style="height:24px"></div>
+          <div class="wb" style="height:10px"></div><div class="wb" style="height:20px"></div>
+          <div class="wb" style="height:14px"></div><div class="wb" style="height:22px"></div>
+          <div class="wb" style="height:8px"></div>
+        </div>
+        <div class="rec-lbl" id="rec-lbl">TAP THE BUTTON ABOVE TO START RECORDING</div>
+        <div class="audio-out" id="audio-out"></div>
+      </div>
+      <div class="rec-err" id="rec-err">MICROPHONE ACCESS DENIED — allow mic in browser settings, or type your story below.</div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-head"><span class="block-ico">✍️</span><span class="block-title">Or write your story</span><span class="block-sub">ANY LENGTH WELCOME</span></div>
+    <div class="block-body">
+      <div class="prompts">
+        <button class="prompt" onclick="usePrompt(this)">What was this neighborhood like when you first arrived?</button>
+        <button class="prompt" onclick="usePrompt(this)">What's changed most in the last 10 years?</button>
+        <button class="prompt" onclick="usePrompt(this)">Tell us about a place that no longer exists.</button>
+        <button class="prompt" onclick="usePrompt(this)">What do you want the City to understand?</button>
+        <button class="prompt" onclick="usePrompt(this)">Describe a neighbor or community figure who mattered.</button>
+      </div>
+      <textarea class="story-ta" id="story-text" rows="5" placeholder="Your words, your way…" oninput="updateCC()"></textarea>
+      <div style="display:flex;justify-content:space-between;margin-top:5px;margin-bottom:2px">
+        <span class="char-ct" id="cc">0 / 2000</span>
+        <span class="mono">AI tags themes on submit</span>
+      </div>
+      <div class="submit-row">
+        <button class="btn-submit" id="submit-btn" onclick="submitStory()">Submit My Story</button>
+      </div>
+      <div class="toast" id="success-toast"><strong>Thank you.</strong> Your story has been received, AI-tagged, and queued for review. To withdraw anytime, email <u>stories@rva-stories.org</u> with "withdraw" in the subject.</div>
+      <div class="ai-result" id="ai-result"><span class="ai-result-label">✦ AI-tagged themes</span><div id="ai-body"></div></div>
+    </div>
+  </div>
+  <div class="note">PARTICIPATION NOTE — Designed to work on any smartphone without technical help. Digital tools can't reach everyone. Community partners offer in-person support at neighborhood associations and public libraries.</div>
+</div>
+
+<!-- ═══ INSIGHTS ═══ -->
+<div id="panel-insights" class="panel">
+  <div class="ai-flag">✦ CLAUDE AI — tags and surfaces themes from submitted stories automatically</div>
+  <div class="metrics">
+    <div class="metric"><div class="metric-n" id="m-stories">47</div><div class="metric-lbl">Stories collected</div><div class="metric-d">+12 this week</div></div>
+    <div class="metric"><div class="metric-n">11</div><div class="metric-lbl">Neighborhoods</div><div class="metric-d">All quadrants</div></div>
+    <div class="metric"><div class="metric-n">68%</div><div class="metric-lbl">10+ yr residents</div><div class="metric-d">Long-term voices</div></div>
+    <div class="metric"><div class="metric-n" id="m-events">142</div><div class="metric-lbl">Events indexed</div><div class="metric-d">3 live sources</div></div>
+  </div>
+
+  <div class="i-block">
+    <div class="i-block-hed"><div class="i-block-title">Top civic themes</div><span class="i-block-sub">FROM 47 STORIES — AI-TAGGED, ANONYMIZED, AGGREGATED</span></div>
+    <div class="i-block-body" id="theme-list"></div>
+  </div>
+
+  <div class="i-block">
+    <div class="i-block-hed"><div class="i-block-title">Recent stories</div></div>
+    <div id="story-feed"></div>
+  </div>
+
+  <div class="i-block">
+    <div class="i-block-hed"><div class="i-block-title">Export for City use</div><span class="i-block-sub">ANONYMIZED REPORTS FOR PLANNING MEETINGS &amp; COUNCIL BRIEFINGS</span></div>
+    <div class="i-block-body">
+      <p style="font-size:15px;color:var(--ink3);font-style:italic">Download anonymized reports ready for City planning meetings and council briefings.</p>
+      <div class="note" style="margin-top:10px">⚠ PARTICIPATION BIAS — Stories collected here skew toward digitally accessible residents. Reports include this caveat and recommend complementary outreach before policy use.</div>
+      <div class="export-btns">
+        <button class="btn-exp" onclick="exportReport('pdf')">↓ PDF SUMMARY</button>
+        <button class="btn-exp" onclick="exportReport('csv')">↓ CSV DATA</button>
+        <button class="btn-exp" onclick="exportReport('json')">↓ JSON FEED</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const S={events:[],filter:'all',recording:false,mediaRecorder:null,audioChunks:[],timerSecs:0,timerI:null,waveI:null,consent:{c1:true,c2:false,c3:false}};
+const DAYS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+function setStatus(on){
+  document.body.classList.toggle('offline',!on);
+  document.getElementById('live-dot').className='live-dot'+(on?'':' dead');
+  document.getElementById('live-txt').textContent=on?'live data':'offline';
+}
+window.addEventListener('online',()=>{setStatus(true);loadEvents();});
+window.addEventListener('offline',()=>{setStatus(false);showCached();});
+
+const MOCK_CW=[
+  {id:'cw1',title:"First Fridays — Scott's Addition Gallery Walk",venue:"Multiple venues",address:"Scott's Addition",type:'visual',hood:'scotts',free:true,date:'2026-03-28',source:'CultureWorks',url:'https://calendar.richmondcultureworks.org'},
+  {id:'cw2',title:"Sculpting History: Art, Power & the Lost Cause",venue:"The Valentine Museum",address:"1015 E Clay St",type:'history',hood:'jackson',free:false,date:'2026-03-29',source:'CultureWorks',url:'https://thevalentine.org'},
+  {id:'cw3',title:"Free Black Experience in Richmond 1780–1865",venue:"Black History Museum of Virginia",address:"122 W Leigh St",type:'history',hood:'jackson',free:true,date:'2026-03-30',source:'CultureWorks',url:'https://bhmuseum.org'},
+  {id:'cw4',title:"Virginia Storytelling Alliance × Writer's Den",venue:"SPARC",address:"300 E Broad St",type:'theater',hood:'richmond',free:false,date:'2026-04-02',source:'CultureWorks',url:'https://sparcrichmond.org'},
+  {id:'cw5',title:"VisArts 2nd Fridays Takeover",venue:"VisArts",address:"1812 W Main St",type:'visual',hood:'fan',free:true,date:'2026-04-04',source:'CultureWorks',url:'https://visarts.org'},
+  {id:'cw6',title:"Art Works! Spring Exhibition Opening",venue:"Art Works Gallery",address:"1548 E Main St",type:'visual',hood:'richmond',free:true,date:'2026-04-06',source:'CultureWorks',url:'https://artworksrichmond.com'},
+  {id:'cw7',title:"RVA Big Read: Community Poetry Night",venue:"Cabell Library, VCU",address:"901 Park Ave",type:'theater',hood:'fan',free:true,date:'2026-04-03',source:'CultureWorks',url:'https://calendar.richmondcultureworks.org'},
+  {id:'cw8',title:"Church Hill Community Mural Unveiling",venue:"29th & E Marshall",address:"Church Hill",type:'visual',hood:'church',free:true,date:'2026-03-29',source:'CultureWorks',url:'https://calendar.richmondcultureworks.org'},
+];
+const MOCK_EB=[
+  {id:'eb1',title:"Jackson Ward Jazz at The Hive",venue:"The Hive",address:"211 W Leigh St",type:'music',hood:'jackson',free:false,date:'2026-03-29',source:'Eventbrite',url:'https://eventbrite.com'},
+  {id:'eb2',title:"Sue Foley — Female Guitar Pioneers Tribute",venue:"W.E. Singleton Center",address:"922 Park Ave",type:'music',hood:'fan',free:false,date:'2026-04-05',source:'Eventbrite',url:'https://eventbrite.com'},
+  {id:'eb3',title:"Broadberry Presents: Emerging RVA Artists Night",venue:"The Broadberry",address:"2729 W Broad St",type:'music',hood:'scotts',free:false,date:'2026-04-01',source:'Eventbrite',url:'https://thebroadberry.com'},
+];
+const MOCK_RSS=[
+  {id:'rss1',title:"RVA Mural Project Community Meeting",venue:"Gilpin Court Community Center",address:"Gilpin Court",type:'community',hood:'jackson',free:true,date:'2026-03-31',source:'Style Weekly',url:'https://styleweekly.com'},
+  {id:'rss2',title:"Carver Community Block Party & Music",venue:"Carver Recreation Center",address:"1 W Leigh St",type:'music',hood:'jackson',free:true,date:'2026-04-05',source:'Style Weekly',url:'https://styleweekly.com'},
+];
+
+async function loadEvents(){
+  const sk=`<div class="ev" style="pointer-events:none"><div class="ev-cal" style="opacity:.25"><div class="ev-cal-d">—</div></div><div class="ev-body" style="display:flex;flex-direction:column;gap:9px;padding:18px 14px"><div class="skel" style="height:13px;width:60%"></div><div class="skel" style="height:10px;width:38%"></div></div></div>`;
+  document.getElementById('ev-list').innerHTML=sk.repeat(3);
+  await new Promise(r=>setTimeout(r,650));
+  if(navigator.onLine){
+    S.events=[...MOCK_CW,...MOCK_EB,...MOCK_RSS];
+    try{localStorage.setItem('rva_ev',JSON.stringify({ts:Date.now(),data:S.events}));}catch(e){}
+    setStatus(true);
+  }else{showCached();}
+  renderEvents();
+  try{document.getElementById('m-events').textContent=S.events.length+128;}catch(e){}
+}
+
+function showCached(){
+  try{const c=localStorage.getItem('rva_ev');if(c)S.events=JSON.parse(c).data||[];}catch(e){S.events=[];}
+  ['pill-cw','pill-eb','pill-rss'].forEach(id=>{const el=document.getElementById(id);el.className='src off';});
+}
+
+function setFilter(btn,f){
+  document.querySelectorAll('#filter-bar .fchip').forEach(c=>c.classList.remove('on'));
+  btn.classList.add('on');S.filter=f;renderEvents();
+}
+
+function renderEvents(){
+  const list=S.events.filter(e=>{
+    if(S.filter==='all')return true;
+    if(S.filter==='free')return e.free;
+    if(['scotts','jackson','fan','church'].includes(S.filter))return e.hood===S.filter;
+    return e.type===S.filter;
+  }).sort((a,b)=>a.date.localeCompare(b.date));
+  if(!list.length){document.getElementById('ev-list').innerHTML='<div class="empty">No events match this filter.</div>';return;}
+  document.getElementById('ev-list').innerHTML=list.map(e=>{
+    const d=new Date(e.date+'T12:00:00');
+    return `<a class="ev" href="${e.url}" target="_blank" rel="noopener">
+      <div class="ev-cal"><div class="ev-cal-mo">${MONTHS[d.getMonth()]}</div><div class="ev-cal-d">${d.getDate()}</div><div class="ev-cal-dow">${DAYS[d.getDay()]}</div></div>
+      <div class="ev-body">
+        <div class="ev-hed">${e.title}</div>
+        <div class="ev-dek">${e.venue} · ${e.address}</div>
+        <div class="ev-meta">
+          <span class="badge ${e.type}">${e.type==='visual'?'Visual Arts':e.type.charAt(0).toUpperCase()+e.type.slice(1)}</span>
+          ${e.free?'<span class="badge free">Free</span>':''}
+          <span class="ev-src">${e.source}</span>
+        </div>
+      </div>
+      <div class="ev-arr">›</div>
+    </a>`;
+  }).join('');
+}
+
+/* MAP */
+const VENUES=[
+  {name:'VisArts',x:.18,y:.42,type:'visual',desc:'1812 W Main St · The Fan'},
+  {name:'The Broadberry',x:.14,y:.30,type:'music',desc:"2729 W Broad St · Scott's Addition"},
+  {name:'Firehouse Theatre',x:.32,y:.35,type:'theater',desc:'1609 W Broad St'},
+  {name:'The Valentine',x:.48,y:.36,type:'history',desc:'1015 E Clay St · Jackson Ward'},
+  {name:'Black History Museum',x:.52,y:.46,type:'history',desc:'122 W Leigh St · Jackson Ward'},
+  {name:'SPARC',x:.44,y:.26,type:'theater',desc:'300 E Broad St'},
+  {name:'The Hive',x:.50,y:.28,type:'music',desc:'211 W Leigh St · Jackson Ward'},
+  {name:'Art Works Gallery',x:.72,y:.40,type:'visual',desc:'1548 E Main St · Church Hill'},
+  {name:'Candela Gallery',x:.68,y:.32,type:'visual',desc:'3158 W Cary St · Carytown'},
+  {name:'W.E. Singleton Center',x:.22,y:.48,type:'music',desc:'922 Park Ave · The Fan'},
+  {name:'Carver Rec Center',x:.46,y:.22,type:'community',desc:'1 W Leigh St · Carver'},
+];
+const TC={visual:'#6a1212',music:'#1a2870',theater:'#6a3800',history:'#42106a',community:'#1a5248'};
+
+function drawMap(){
+  const cv=document.getElementById('map-canvas'),tip=document.getElementById('map-tip');
+  const ctx=cv.getContext('2d'),W=cv.width,H=cv.height;
+  ctx.clearRect(0,0,W,H);
+  ctx.fillStyle='#e5dcc8';ctx.fillRect(0,0,W,H);
+  ctx.fillStyle='#c4d4bf';ctx.fillRect(0,0,W*.38,H);
+  ctx.fillStyle='#cec9be';ctx.fillRect(W*.38,0,W*.25,H);
+  ctx.fillStyle='#d5cfc4';ctx.fillRect(W*.63,0,W*.37,H);
+  ctx.fillStyle='#aabfd0';
+  ctx.beginPath();ctx.moveTo(0,H*.62);ctx.bezierCurveTo(W*.2,H*.55,W*.5,H*.68,W,H*.60);ctx.lineTo(W,H);ctx.lineTo(0,H);ctx.closePath();ctx.fill();
+  ctx.strokeStyle='rgba(28,17,8,.12)';ctx.lineWidth=1;ctx.setLineDash([5,5]);
+  [[W*.38,0,W*.38,H*.6],[W*.63,0,W*.63,H*.6]].forEach(([x1,y1,x2,y2])=>{ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.stroke();});
+  ctx.setLineDash([]);
+  ctx.font='9px IBM Plex Mono,monospace';ctx.textAlign='center';
+  [{t:"THE FAN / SCOTT'S ADDITION",x:W*.19,y:16},{t:"JACKSON WARD",x:W*.505,y:16},{t:"CHURCH HILL",x:W*.815,y:16},{t:"JAMES RIVER",x:W*.5,y:H*.82}].forEach(l=>{
+    ctx.fillStyle=l.t==='JAMES RIVER'?'rgba(255,255,255,.65)':'rgba(28,17,8,.4)';ctx.fillText(l.t,l.x,l.y);
+  });
+  VENUES.forEach(v=>{
+    const px=v.x*W,py=v.y*H,col=TC[v.type]||'#1a5248';
+    ctx.beginPath();ctx.arc(px+1,py+1,8,0,Math.PI*2);ctx.fillStyle='rgba(28,17,8,.15)';ctx.fill();
+    ctx.beginPath();ctx.arc(px,py,9,0,Math.PI*2);ctx.fillStyle='white';ctx.fill();
+    ctx.beginPath();ctx.arc(px,py,6.5,0,Math.PI*2);ctx.fillStyle=col;ctx.fill();
+  });
+  function hit(cx,cy){
+    const r=cv.getBoundingClientRect(),mx=(cx-r.left)*(W/r.width),my=(cy-r.top)*(H/r.height);
+    for(const v of VENUES){const dx=v.x*W-mx,dy=v.y*H-my;if(dx*dx+dy*dy<196)return v;}return null;
+  }
+  function onMove(e){
+    const cx=e.touches?e.touches[0].clientX:e.clientX,cy=e.touches?e.touches[0].clientY:e.clientY;
+    const v=hit(cx,cy),r=cv.getBoundingClientRect();
+    if(v){tip.textContent=`${v.name} — ${v.desc}`;tip.style.opacity='1';const p=v.x*100;tip.style.left=p<60?(r.width*v.x+16)+'px':'auto';tip.style.right=p>=60?(r.width*(1-v.x)+16)+'px':'auto';tip.style.top=(r.height*v.y-36)+'px';cv.style.cursor='pointer';}
+    else{tip.style.opacity='0';cv.style.cursor='default';}
+  }
+  cv.onmousemove=onMove;cv.ontouchmove=onMove;cv.onmouseleave=()=>tip.style.opacity='0';
+}
+
+function renderDistricts(){
+  const ds=[{n:"Jackson Ward",ic:'🏛',tag:"Historic hub of Black entrepreneurship & jazz",ct:4},{n:"Scott's Addition",ic:'🎵',tag:"Industrial breweries turned arts warehouses",ct:3},{n:"The Fan",ic:'🎨',tag:"Victorian row houses, galleries & music halls",ct:5},{n:"Church Hill",ic:'🎭',tag:"Richmond's oldest neighborhood, murals & community arts",ct:2}];
+  document.getElementById('district-list').innerHTML=ds.map(d=>`<div class="d-card"><div class="d-ico">${d.ic}</div><div style="flex:1"><div class="d-name">${d.n}</div><div class="d-sub">${d.tag}</div></div><div class="d-ct">${d.ct} venues</div></div>`).join('');
+}
+
+/* RECORDER */
+async function toggleRecording(){
+  if(!S.recording){
+    try{
+      const stream=await navigator.mediaDevices.getUserMedia({audio:true});
+      S.mediaRecorder=new MediaRecorder(stream);S.audioChunks=[];
+      S.mediaRecorder.ondataavailable=e=>S.audioChunks.push(e.data);
+      S.mediaRecorder.onstop=finishRec;S.mediaRecorder.start();
+      S.recording=true;S.timerSecs=0;
+      document.getElementById('rec-btn').classList.add('pulsing');
+      document.getElementById('rec-circle').classList.add('sq');
+      document.getElementById('rec-zone').classList.add('live');
+      document.getElementById('rec-timer').style.display='block';
+      document.getElementById('wave').style.display='flex';
+      document.getElementById('rec-lbl').textContent='RECORDING — TAP BUTTON TO STOP';
+      S.timerI=setInterval(()=>{S.timerSecs++;const m=Math.floor(S.timerSecs/60),s=String(S.timerSecs%60).padStart(2,'0');document.getElementById('rec-timer').textContent=`${m}:${s}`;if(S.timerSecs>=300)toggleRecording();},1000);
+      S.waveI=setInterval(()=>{document.querySelectorAll('.wb').forEach(b=>{b.style.height=(4+Math.random()*24)+'px';});},100);
+    }catch{document.getElementById('rec-err').style.display='block';}
+  }else{
+    S.mediaRecorder.stop();S.mediaRecorder.stream.getTracks().forEach(t=>t.stop());S.recording=false;
+    clearInterval(S.timerI);clearInterval(S.waveI);
+    document.getElementById('rec-btn').classList.remove('pulsing');
+    document.getElementById('rec-circle').classList.remove('sq');
+    document.getElementById('rec-zone').classList.remove('live');
+    document.getElementById('wave').style.display='none';
+    document.getElementById('rec-lbl').textContent='PROCESSING…';
+  }
+}
+function finishRec(){
+  const blob=new Blob(S.audioChunks,{type:'audio/webm'});
+  const out=document.getElementById('audio-out');
+  out.innerHTML=`<audio controls src="${URL.createObjectURL(blob)}"></audio>`;
+  out.style.display='block';
+  document.getElementById('rec-timer').style.display='none';
+  document.getElementById('rec-lbl').textContent='RECORDING SAVED — REVIEW ABOVE OR RECORD AGAIN';
+}
+
+/* CONSENT */
+function toggleConsent(id){S.consent[id]=!S.consent[id];const el=document.getElementById(id);el.classList.toggle('on',S.consent[id]);el.textContent=S.consent[id]?'✓':'';}
+
+/* STORY */
+function usePrompt(btn){document.getElementById('story-text').value=btn.textContent+' ';document.getElementById('story-text').focus();updateCC();}
+function updateCC(){document.getElementById('cc').textContent=`${document.getElementById('story-text').value.length} / 2000`;}
+
+async function submitStory(){
+  const text=document.getElementById('story-text').value.trim();
+  if(!text&&S.audioChunks.length===0)return;
+  const btn=document.getElementById('submit-btn');btn.disabled=true;btn.textContent='Tagging with Claude AI…';
+  let tags=[],civicNote='';
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:`You are a civic insight analyst for Richmond, Virginia. Return ONLY valid JSON with no markdown:\n{"tags":["tag1","tag2"],"primaryTheme":"4 words max","civicNote":"one sentence for City planners","sentiment":"hopeful|concerned|nostalgic|urgent|neutral"}\nAvailable tags: displacement, housing-cost, community-anchors, generational-memory, transit-access, arts-culture, civic-engagement, neighborhood-change, loss-of-spaces, community-pride, safety, economic-change, cultural-preservation`,messages:[{role:'user',content:`Richmond resident story:\n"${text.slice(0,800)}"`}]})});
+    const data=await res.json();
+    const parsed=JSON.parse((data.content?.find(b=>b.type==='text')?.text||'{}').replace(/```json|```/g,'').trim());
+    tags=parsed.tags||[];civicNote=parsed.civicNote||'';
+    document.getElementById('ai-body').innerHTML=`<div style="margin-bottom:6px">${tags.map(t=>`<span style="font-family:'IBM Plex Mono',monospace;font-size:9px;background:var(--teal);color:white;padding:2px 7px;margin-right:4px;display:inline-block;margin-bottom:3px;letter-spacing:.3px;text-transform:uppercase">${t}</span>`).join('')}</div><div style="font-size:15px;color:var(--ink2);font-style:italic">${civicNote}</div>`;
+    document.getElementById('ai-result').style.display='block';
+  }catch{tags=localTag(text);}
+  const story={id:Date.now(),text,neighborhood:document.getElementById('nbhood').value,duration:document.getElementById('duration').value,consent:{...S.consent},hasAudio:S.audioChunks.length>0,tags,ts:new Date().toISOString()};
+  try{const arr=JSON.parse(localStorage.getItem('rva_stories')||'[]');arr.unshift(story);localStorage.setItem('rva_stories',JSON.stringify(arr));const m=document.getElementById('m-stories');m.textContent=parseInt(m.textContent)+1;}catch(e){}
+  btn.textContent='Submitted ✓';document.getElementById('story-text').value='';updateCC();document.getElementById('success-toast').classList.add('show');
+  setTimeout(()=>{btn.disabled=false;btn.textContent='Submit My Story';},4000);
+}
+
+function localTag(t){const tx=t.toLowerCase(),tags=[];if(/displac|pric|afford|rent|evict|gentrific/.test(tx))tags.push('displacement');if(/store|restaurant|church|school|park|corner|barber|gather/.test(tx))tags.push('community-anchors');if(/grandpar|child|parent|family|generation|grew up/.test(tx))tags.push('generational-memory');if(/bus|transit|walk|car|access/.test(tx))tags.push('transit-access');if(/art|music|mural|gallery|culture|perform/.test(tx))tags.push('arts-culture');if(/city|council|police|vote|plan/.test(tx))tags.push('civic-engagement');if(!tags.length)tags.push('neighborhood-life');return tags;}
+
+/* INSIGHTS */
+const THEMES=[{l:'Displacement & housing cost',n:31,pct:66,c:'#42106a'},{l:'Loss of community anchors',n:24,pct:51,c:'#1a5248'},{l:'Generational memory',n:19,pct:40,c:'#6a1212'},{l:'Transit & accessibility',n:14,pct:30,c:'#6a3800'},{l:'Arts & cultural spaces',n:11,pct:23,c:'#1a2870'},{l:'Civic engagement',n:8,pct:17,c:'#4a3800'}];
+const SAMPLE=[{hood:'Jackson Ward',c:'#42106a',bg:'#f0e8ff',yrs:'38 yrs',q:'"The corner store on Leigh Street was where everyone gathered after church. When it closed in 2019 we lost something that can\'t be replaced."',tags:['displacement','community-anchors','generational-memory']},{hood:'Church Hill',c:'#6a3800',bg:'#fff3e0',yrs:'22 yrs',q:'"I\'ve watched four families on my block get priced out in three years. The new coffee shop is nice but it\'s not for us."',tags:['housing-cost','displacement']},{hood:'Gilpin Court',c:'#1a5248',bg:'#d8ede8',yrs:'54 yrs',q:'"My mother raised nine of us two blocks from here. The neighbors knew each other\'s names. Now it feels like everyone is passing through."',tags:['community-anchors','generational-memory']}];
+
+function renderInsights(){
+  document.getElementById('theme-list').innerHTML=THEMES.map(t=>`<div class="theme-item"><div class="theme-row"><span class="theme-name">${t.l}</span><span class="theme-n">${t.n} stories</span></div><div class="theme-track"><div class="theme-fill" data-pct="${t.pct}" style="background:${t.c}"></div></div></div>`).join('');
+  setTimeout(()=>{document.querySelectorAll('.theme-fill').forEach(el=>{el.style.width=el.dataset.pct+'%';});},150);
+  let stored=[];try{stored=JSON.parse(localStorage.getItem('rva_stories')||'[]');}catch(e){}
+  const show=stored.length?stored.slice(0,3).map(s=>({hood:s.neighborhood||'Richmond',c:'#1a5248',bg:'#d8ede8',yrs:s.duration||'',q:`"${s.text.slice(0,180)}${s.text.length>180?'…':''}"`,tags:s.tags||[]})):SAMPLE;
+  document.getElementById('story-feed').innerHTML=show.map(s=>`<div class="s-card"><div class="s-top"><span class="s-hood" style="background:${s.bg};color:${s.c}">${s.hood}</span><span class="s-yrs">${s.yrs?'Resident '+s.yrs:''}</span></div><div class="s-quote">${s.q}</div><div class="s-pills">${s.tags.map(t=>`<span class="s-pill">${t}</span>`).join('')}</div></div>`).join('');
+}
+
+function exportReport(fmt){
+  let stories=[];try{stories=JSON.parse(localStorage.getItem('rva_stories')||'[]');}catch(e){}
+  const ts=new Date().toISOString().split('T')[0],disc='PARTICIPATION BIAS DISCLOSURE: Stories collected via this digital tool skew toward digitally accessible residents. Supplementary outreach recommended before policy use.';
+  if(fmt==='json'){dl(new Blob([JSON.stringify({generated:ts,disclaimer:disc,stories},null,2)],{type:'application/json'}),`rva-stories-${ts}.json`);}
+  else if(fmt==='csv'){const rows=[['id','neighborhood','duration','tags','timestamp'],...stories.map(s=>[s.id,s.neighborhood,s.duration,(s.tags||[]).join(';'),s.ts])];dl(new Blob([disc+'\n\n'+rows.map(r=>r.join(',')).join('\n')],{type:'text/csv'}),`rva-stories-${ts}.csv`);}
+  else{alert('PDF export calls server-side report generation API in production.');}
+}
+function dl(blob,name){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();}
+
+function subscribeAlerts(){
+  const v=document.getElementById('alert-email').value.trim();if(!v||!v.includes('@'))return;
+  try{const a=JSON.parse(localStorage.getItem('rva_subs')||'[]');a.push({email:v,ts:new Date().toISOString()});localStorage.setItem('rva_subs',JSON.stringify(a));}catch(e){}
+  document.getElementById('alert-ok').style.display='block';document.getElementById('alert-email').value='';
+}
+
+function showTab(tab,btn){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('on'));
+  document.getElementById('panel-'+tab).classList.add('on');btn.classList.add('on');
+  if(tab==='map'){setTimeout(drawMap,40);renderDistricts();}
+  if(tab==='insights')renderInsights();
+}
+
+if('serviceWorker' in navigator){
+  const sw=`const C='rva-v1';self.addEventListener('install',e=>e.waitUntil(caches.open(C).then(c=>c.addAll(['/']))));self.addEventListener('fetch',e=>e.respondWith(fetch(e.request).catch(()=>caches.match(e.request))));`;
+  navigator.serviceWorker.register(URL.createObjectURL(new Blob([sw],{type:'application/javascript'}))).catch(()=>{});
+}
+
+setStatus(navigator.onLine);
+loadEvents();
+</script>
+</body>
+</html>
