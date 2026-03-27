@@ -1,0 +1,16 @@
+Services C5 — Where Residents Fall Through the Cracks
+
+Synthesize across the arts discovery and civic storytelling landscapes to identify where Richmond residents currently fall through the cracks. Focus on:
+
+- The resident who wants to attend arts events but cannot find them: where exactly does the discovery chain break?
+- The longtime resident who wants to share neighborhood history: where does the sharing chain break?
+- Community organizations doing adjacent work that do not connect to City processes
+- Arts organizations that produce events but reach only their existing networks
+
+Identify the specific "crack" moments — the exact point in each user's journey where they give up or are failed.
+
+Output
+- Crack inventory: specific failure moments for each user type
+- Service and infrastructure gaps that cause the cracks
+- Which gaps are addressable by a weekend hackathon prototype
+- Which gaps require institutional solutions beyond a hackathon

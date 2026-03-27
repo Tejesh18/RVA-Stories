@@ -1,0 +1,13 @@
+Problem Landscape A1 — Arts Event Discovery Reality
+
+Investigate the real-world shape of Richmond's arts and cultural event discovery problem. Using only verifiable public information and clearly labeled inferences, explain where the difficulty actually occurs for a resident trying to find arts events: scattered sources, platform fragmentation, dependence on social networks, absence of structured data, or gaps in existing aggregators.
+
+Focus specifically on Richmond, Virginia.
+
+Output
+- Facts (with source titles)
+- Inferences (clearly labeled)
+- Unknowns (what cannot be verified publicly)
+- Assessment of primary friction points for residents
+- Assessment of primary friction points for arts organizations trying to promote events
+- Note whether dorichmond.com addresses these gaps or leaves them open

@@ -1,0 +1,18 @@
+Prior Art E2 — Civic Story Collection Tools
+
+Research tools designed to collect resident stories for civic purposes. For each, describe how they work, what consent mechanisms they use, how stories are stored and used, and whether they were effective.
+
+Focus on:
+- StoryCorps: model, consent, archive approach, civic impact
+- Historypin: place-based storytelling, community contributions, institutional partnerships
+- ESRI Story Maps for civic storytelling
+- Neighborland and similar resident voice platforms
+- Any city government that has deployed a successful resident story collection tool
+- Voice-first civic engagement tools (phone-based, audio-first)
+
+Output
+- Inventory of civic story collection tools with key design features
+- Consent frameworks used by successful tools
+- What makes a story collection tool trusted by vulnerable or skeptical residents
+- Key failure patterns: tools that collected stories but failed to use them
+- Recommendation: which model best fits Richmond's context and constraints

@@ -1,0 +1,17 @@
+Users B1 — The Arts-Curious Richmond Resident
+
+Build a detailed persona for a Richmond resident who wants to discover and attend local arts and cultural events but currently struggles to find them. Include:
+
+- Demographic range (new residents, longtime residents who are not plugged in, visitors)
+- Current discovery behaviors: which channels they use, which they find unreliable, which they wish existed
+- Specific pain points: what events do they miss and why
+- Technology comfort level: what devices and platforms they use naturally
+- What "success" looks like for them in a discovery tool
+
+Base on evidence from Richmond, Virginia and comparable cities. Label inferences clearly.
+
+Output
+- Persona profile with behaviors, pain points, and goals
+- Specific journey failure points this persona experiences today
+- Feature requirements implied by this persona's needs
+- What this persona would find in a successful tool that does not exist today

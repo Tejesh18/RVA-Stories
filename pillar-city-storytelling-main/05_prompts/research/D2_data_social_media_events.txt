@@ -1,0 +1,15 @@
+Data D2 — Social Media Events: Accessibility and Limitations
+
+Investigate the current state of social media event data access for third-party applications. Focus on:
+
+- Facebook Events Graph API: what changed in 2018-2019, what is currently accessible without app review, what would require app review, realistic assessment of access for a hackathon team
+- Instagram: does any structured event data exist via API or is it only unstructured media?
+- Other social platforms (Meetup, Nextdoor): what event data is accessible and how relevant to Richmond arts events?
+- Practical alternatives: if social media event data is inaccessible, what replaces it for a Richmond arts aggregator?
+
+Output
+- Confirmed status of Facebook Events API access for third parties
+- Confirmed status of Instagram event data access
+- Assessment of Meetup and Nextdoor for Richmond arts events
+- Clear recommendation: which social platforms can be used in a hackathon arts aggregator and which cannot
+- Alternative data sources that compensate for social media inaccessibility

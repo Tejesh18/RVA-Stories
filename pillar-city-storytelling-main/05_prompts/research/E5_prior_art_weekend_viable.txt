@@ -1,0 +1,23 @@
+Prior Art E5 — What Is Weekend-Viable Based on Prior Art
+
+Based on the prior art survey (E1-E4), assess which solution patterns from the benchmark scan can realistically be built by a small mixed team in 48 hours.
+
+Evaluate each option:
+- Arts event aggregator (Eventbrite API + RSS feeds)
+- Neighborhood discovery feed (geographic filter on aggregated events)
+- Arts and culture district map (geographic visualization)
+- Story collection portal (guided prompts, voice or text input, consent flow)
+- Story-to-insight dashboard (theme extraction from submitted stories)
+- Neighborhood history explorer (place-based stories, seeded content)
+
+For each option, assess:
+- Technical complexity on a 1-5 scale
+- Data availability on a 1-5 scale
+- Demo quality achievable in 48 hours on a 1-5 scale
+- Institutional dependencies on a 1-5 scale (higher = more dependencies = riskier for weekend)
+
+Output
+- Ranked list of options by weekend viability
+- Recommended primary MVP shape for a team that wants the best chance of a strong demo
+- Stretch goal recommendations if the primary shape is completed early
+- Specific risks to watch for in the top recommended option

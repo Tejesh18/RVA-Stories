@@ -1,0 +1,17 @@
+Prior Art E4 — What Failed and Why
+
+Research documented failures of city event calendars and civic story collection tools. Identify what went wrong, what the lessons are, and how to avoid repeating them.
+
+Specific failure patterns to investigate:
+- City events calendars that decayed due to manual curation burden (document specific examples)
+- Story collection portals that collected submissions but produced no visible civic use (document specific examples)
+- Arts aggregators that failed to reach underrepresented arts communities
+- Tools that were technically functional but failed to build trust with skeptical resident populations
+- National tool shutdowns: Eventful, Plancast, other event aggregators that ceased operation
+
+Output
+- Documented failure cases with root cause analysis
+- Key failure patterns specific to arts aggregation
+- Key failure patterns specific to story collection
+- Specific design and institutional choices that prevented or caused failures
+- Checklist of failure conditions to test your hackathon prototype against

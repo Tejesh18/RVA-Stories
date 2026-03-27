@@ -1,0 +1,18 @@
+Risks G2 — Consent and Privacy for Storytellers
+
+Investigate consent and privacy requirements for a civic story collection tool. Focus on:
+
+- What constitutes valid informed consent for a resident sharing a personal story with a City-connected tool?
+- What must a consent statement include: who sees the story, how it is stored, how it is used, how long it is kept, whether it may be published, right to withdraw
+- Special considerations for sensitive stories (stories about displacement, discrimination, family hardship, criminal justice)
+- Privacy risks specific to neighborhood history stories (identifying living individuals, revealing locations of people who may prefer not to be found)
+- COPPA considerations if any minors might submit stories
+- What data minimization looks like: what is the minimum personal information needed?
+
+Output
+- Required elements of a consent statement for this use case
+- Special handling requirements for sensitive story content
+- Data minimization guidelines (what to collect and what not to collect)
+- Template consent language in plain English
+- Template consent language in Spanish
+- Recommendation for where stories should be stored and who should have access

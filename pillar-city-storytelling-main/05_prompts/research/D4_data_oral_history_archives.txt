@@ -1,0 +1,17 @@
+Data D4 — Oral History and Story Archive Data
+
+Investigate what oral history and community story data is available in digital, publicly accessible form from Richmond institutions and national archives. Specifically:
+
+- The Valentine (Richmond History Center): what digital collections exist, are they searchable online, what formats (audio, transcript, photos)?
+- Black History Museum and Cultural Center of Virginia: digital collection scope, online accessibility
+- VCU Libraries digital special collections: what Richmond-focused oral history or neighborhood documentation is publicly accessible online?
+- StoryCorps Archive (archive.storycorps.org): does it include Richmond stories, how many, searchable by location?
+- Library of Virginia: digital collections relevant to Richmond neighborhood history
+- Internet Archive (archive.org): any Richmond community history materials
+
+Output
+- Confirmed publicly accessible digital oral history content from each source
+- Data formats and API/scraping accessibility for each
+- Volume estimate: how much seed content is realistically available for a neighborhood history tool?
+- Gaps: which Richmond neighborhoods have no publicly accessible oral history content?
+- Copyright and attribution requirements for content that is accessible

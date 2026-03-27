@@ -1,0 +1,38 @@
+Missing Information Gaps — A City That Tells Its Stories
+
+These are known gaps from the rubric working session and the problem statements. Each gap blocks a specific project direction. Note what is needed and how to address it during the hackathon.
+
+GAP 1 — Arts Organization Calendar Data
+What is missing: A comprehensive list of Richmond arts organizations, galleries, and venues with their calendar URLs, RSS feeds, and social media accounts.
+Why it matters: An arts aggregator cannot be built without knowing which organizations have accessible structured data.
+How to resolve: During the hackathon, manually check 15-20 Richmond arts organization websites for calendar formats. Log results in evidence_log.md. Prioritize organizations with iCal or RSS feeds.
+
+GAP 2 — How Residents Currently Discover Arts Events
+What is missing: Documentation of what channels Richmond residents actually use to discover arts events today, and where those channels fail them.
+Why it matters: Validates the problem statement and informs which discovery failure modes the tool should address.
+How to resolve: Quick informal interviews (3-5 people) during the hackathon orientation session. Ask: "How did you find out about the last arts event you attended in Richmond?" Log patterns.
+
+GAP 3 — Arts and Cultural District Boundary Data in GeoHub
+What is missing: Confirmation of whether Richmond's arts and cultural district boundaries exist as a GIS layer in the Richmond GeoHub.
+Why it matters: A geographic arts discovery tool or district map depends on having usable boundary data.
+How to resolve: Visit https://rvagis.richmond.gov during the hackathon and search for arts, cultural, or district layers. If not found, fall back to neighborhood boundaries.
+
+GAP 4 — Oral History Collection Scope and Digital Accessibility
+What is missing: Scope, format, and public accessibility of oral history collections at The Valentine, Black History Museum, VCU Libraries, and Virginia Museum of History and Culture.
+Why it matters: A neighborhood history explorer tool needs seed content, which may be available from these collections if accessible.
+How to resolve: Check each institution's website for digital collections. Contact digitally during hackathon if needed. Document what is publicly accessible vs. requiring institutional access.
+
+GAP 5 — Storytelling Channel Preferences for Target Population
+What is missing: Documentation of which storytelling and submission channels are comfortable for the target population (elderly residents, residents with limited digital access, non-English speakers).
+Why it matters: A story collection tool designed without this knowledge will default to formats that exclude the most valuable contributors.
+How to resolve: Research comparable tools (StoryCorps, voice-first civic engagement initiatives). Note accessibility patterns from similar projects in comparable cities. Prioritize voice-first and minimal-step designs.
+
+GAP 6 — Continuation Champion Identification
+What is missing: A confirmed, named departmental or institutional champion for either targeted problem statement. Both statements are flagged with the "no continuation pathway" quick-kill flag.
+Why it matters: Without a champion, even a successful hackathon prototype has no home post-event.
+How to resolve: During demo day, explicitly name the four potential champions (Todd Waldo, Meg Hughes, Sylvio Lynch III, Chaya Braxton) and propose which would be the best fit for the specific tool built. Make the continuation ask explicit in your pitch.
+
+GAP 7 — Output Type Specification
+What is missing: Specification of the expected output type for weekend demo — neither targeted statement specifies whether the output should be a web app, a data visualization, a mobile experience, a staff tool, or a public-facing portal.
+Why it matters: Output type determines architecture, scope, and demo strategy.
+How to resolve: Decide your output type in the first hour of the hackathon. Document it in your working_direction_note.md. Do not let this decision drift.

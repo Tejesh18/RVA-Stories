@@ -1,0 +1,17 @@
+Risks G1 — Representational Bias: Risk of Amplifying Only Certain Voices
+
+Investigate the representational bias risks in arts discovery and story collection tools. Focus on:
+
+- Who naturally uses digital self-service tools (civic tech user bias toward educated, English-speaking, digitally fluent populations)
+- Which Richmond communities are systematically underrepresented in civic tech participation
+- Specific design choices that amplify dominant voices: web-form-only submission, English-only interfaces, requiring email or login, using only mainstream event platforms as sources
+- What "representational harm" looks like in practice: a dashboard that shows "what Richmond thinks" when only 15% of residents submitted anything
+
+For Richmond specifically: which arts communities and neighborhood storytellers are most likely to be excluded by default?
+
+Output
+- Inventory of representational bias risks for this pillar
+- Specific design choices that create each bias
+- Design mitigations that reduce (but cannot eliminate) bias
+- Honest framing for what a weekend prototype can realistically achieve on equity
+- Required disclaimers for any aggregate or insight view

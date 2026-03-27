@@ -1,0 +1,17 @@
+Opportunity Spaces F2 — Arts Discovery Deep Dive
+
+For the arts event discovery opportunity specifically, map out what a successful hackathon prototype would look like in detail. Address:
+
+- What is the minimum viable data pipeline: which sources must be included for the demo to be compelling?
+- What is the core user flow that demonstrates the most value in under 60 seconds?
+- What specific Richmond events or venues would make the demo most credible?
+- What filter or discovery feature has the highest impact for first-time users?
+- What does the tool explicitly NOT do, and how should that be communicated?
+- What is the relationship to existing tools like dorichmond.com — complement or replace?
+
+Output
+- Minimum viable data set for a credible demo
+- Core user flow description
+- Feature priority list (must-have vs. nice-to-have vs. out of scope)
+- Credibility tests: what must be true for a judge to find this compelling?
+- Explicit scope boundaries for the weekend prototype

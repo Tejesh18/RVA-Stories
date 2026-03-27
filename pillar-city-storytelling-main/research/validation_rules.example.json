@@ -1,0 +1,10 @@
+{
+  "_comment": "Copy to validation_rules.json and adjust regexes for conflict checks.",
+  "fact_patterns": [
+    {
+      "key": "most_recent_event_year",
+      "regex": "(?i)(most\s+recent\s+event|latest\s+festival).*?\b(?P<val>\d{4})\b"
+    }
+  ]
+}
+

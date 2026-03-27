@@ -1,0 +1,21 @@
+Prior Art E3 — Place-Based Storytelling Tools
+
+Research tools that connect stories to specific geographic places, particularly neighborhood-level storytelling tools. Include:
+
+- Historypin: how it works, who uses it, technical implementation, strengths and weaknesses
+- QR code neighborhood history installations: examples from other cities, implementation requirements
+- Walking tour apps with narrative content (Detour, Soundwalk, similar)
+- Museum map-based storytelling tools
+- Richmond-specific: any place-based storytelling tools or neighborhood history apps currently in use in Richmond
+
+For each, assess:
+- Technical complexity to build in a weekend
+- How seed content was obtained and maintained
+- User engagement patterns
+- Whether institutional partnerships were required
+
+Output
+- Inventory of place-based storytelling tools with technical complexity assessment
+- Which models are weekend-buildable vs. which require more infrastructure
+- Recommendation for a Richmond neighborhood history tool MVP shape
+- Seed content requirements and realistic sources for Richmond

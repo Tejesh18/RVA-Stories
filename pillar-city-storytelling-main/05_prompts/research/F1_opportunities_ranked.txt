@@ -1,0 +1,22 @@
+Opportunity Spaces F1 — Ranked by Hackathon Viability
+
+Rank all opportunity spaces for Pillar 7 (A City That Tells Its Stories) by their viability for a 48-hour hackathon. Use the following criteria:
+- Data availability (can the team access what they need during the hackathon?)
+- Technical complexity (can a small mixed team build it in 48 hours?)
+- Demo quality (how compelling will the demo be on Sunday?)
+- Civic impact (does it address a real Richmond problem?)
+- Continuation potential (does it have a natural post-hackathon home?)
+
+Opportunity spaces to evaluate:
+1. Arts event aggregator (API + RSS pipeline)
+2. Neighborhood event discovery feed (geographic filter)
+3. Arts and culture map (geographic visualization)
+4. Story collection portal (voice/text, consent-first)
+5. Story-to-insight dashboard (theme extraction, staff-facing)
+6. Neighborhood history explorer (place-based, seeded content)
+7. Staff workflow helper (for civic engagement or arts program staff)
+
+Output
+- Ranked list with score on each criterion
+- Top 2 recommended opportunities with rationale
+- Decision tree: which opportunity fits which team skill profile

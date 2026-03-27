@@ -1,0 +1,20 @@
+Prior Art E1 — City Arts Event Aggregators: National Examples
+
+Research city-specific arts and cultural event aggregators that exist nationally. For each, describe what they aggregate, how they are maintained, who owns them, and whether they are sustainable.
+
+Focus on:
+- Do Richmond (dorichmond.com): existing Richmond tool — how does it work, what does it cover, is it maintained?
+- Chicago Office of Cultural Affairs digital tools
+- DC-area arts aggregators (ArtsInDC, similar)
+- Boston area arts discovery tools
+- Philadelphia arts and culture portals
+- Any city that has built a sustainable automated arts event aggregator
+
+Also: what happened to Eventful and similar national tools that tried comprehensive event aggregation?
+
+Output
+- Inventory of national arts aggregator examples with sustainability notes
+- Key design and technical lessons from successful tools
+- Key failure patterns from tools that decayed or shut down
+- Assessment of what makes an arts aggregator sustainable vs. what causes it to fail
+- Recommendation for which models to emulate for a Richmond weekend prototype

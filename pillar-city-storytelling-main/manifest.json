@@ -1,0 +1,561 @@
+{
+  "corpus": {
+    "pillar": "city-storytelling",
+    "title": "A City That Tells Its Stories — Richmond Civic Hackathon",
+    "description": "Research corpus on Richmond's civic storytelling and arts discovery problem space: cultural event aggregation, resident narrative capture, neighborhood history preservation, and equitable arts visibility.",
+    "research_index": "research/index.json",
+    "corpus_guide": "CORPUS_GUIDE.md",
+    "agents_spec": "AGENTS.md",
+    "maintenance_guide": "MAINTENANCE.md",
+    "generated": "2026-03-18"
+  },
+  "files": [
+
+    {
+      "id": "root/README",
+      "path": "README.md",
+      "type": "nav_file",
+      "title": "A City That Tells Its Stories — Decision Funnel",
+      "pillar": "city-storytelling",
+      "summary": "Primary entry point for hackathon teams. Covers the three core questions, decision phases (0–9), guardrails, repo map, and Hackbot introduction. Read first for orientation.",
+      "tags": ["entry-point", "decision-phases", "guardrails", "orientation", "hackathon"],
+      "recommended_audience": ["all teams", "first-time visitors", "AI agents starting a session"],
+      "read_after": [],
+      "source_of_truth": false
+    },
+
+    {
+      "id": "root/QUICKSTART",
+      "path": "QUICKSTART.md",
+      "type": "nav_file",
+      "title": "Quick Start — Minimal Path to MVP",
+      "pillar": "city-storytelling",
+      "summary": "Minimal path from landing to MVP scope for teams with limited time. Prioritized reading sequence and quick decision framework.",
+      "tags": ["quickstart", "minimal-path", "mvp", "orientation"],
+      "recommended_audience": ["teams with limited time", "teams that need a clear starting point"],
+      "read_after": ["README.md"],
+      "source_of_truth": false
+    },
+
+    {
+      "id": "root/AGENTS",
+      "path": "AGENTS.md",
+      "type": "agent_spec",
+      "title": "Hackbot Agent Specification",
+      "pillar": "city-storytelling",
+      "summary": "Full specification for Hackbot: personality, boot sequence, skill system, research corpus navigation instructions, guardrails, and decision logic. AI agents should read this before acting.",
+      "tags": ["hackbot", "agent-spec", "skills", "boot-sequence", "research-corpus-navigation"],
+      "recommended_audience": ["AI agents", "developers building on Hackbot"],
+      "read_after": [],
+      "source_of_truth": true
+    },
+
+    {
+      "id": "root/CORPUS_GUIDE",
+      "path": "CORPUS_GUIDE.md",
+      "type": "nav_file",
+      "title": "Research Corpus Guide",
+      "pillar": "city-storytelling",
+      "summary": "Self-describing guide for humans and AI agents on how to navigate and use the research corpus. Covers canonical source of truth hierarchy, section structure, navigation decision tree, and agent behavior requirements.",
+      "tags": ["corpus-guide", "navigation", "agent-behavior", "retrieval", "architecture"],
+      "recommended_audience": ["AI agents", "researchers", "hackathon participants unfamiliar with the corpus"],
+      "read_after": ["README.md"],
+      "source_of_truth": false
+    },
+
+    {
+      "id": "root/MAINTENANCE",
+      "path": "MAINTENANCE.md",
+      "type": "maintenance_guide",
+      "title": "Maintenance Guide",
+      "pillar": "city-storytelling",
+      "summary": "Instructions for adding, updating, and synchronizing research reports, metadata, indexes, and navigation files. Required reading before modifying the corpus structure.",
+      "tags": ["maintenance", "adding-reports", "metadata", "synchronization"],
+      "recommended_audience": ["corpus maintainers", "pillar coordinators", "AI agents tasked with corpus updates"],
+      "read_after": ["CORPUS_GUIDE.md"],
+      "source_of_truth": true
+    },
+
+    {
+      "id": "root/HACKBOT_BOOT_PROMPT",
+      "path": "HACKBOT_BOOT_PROMPT.md",
+      "type": "agent_spec",
+      "title": "Hackbot Boot Prompt",
+      "pillar": "city-storytelling",
+      "summary": "Initialization prompt for Hackbot. Contains the condensed boot sequence and initial framing for AI agent sessions.",
+      "tags": ["hackbot", "boot-prompt", "agent-initialization"],
+      "recommended_audience": ["AI agents initializing a session"],
+      "read_after": ["AGENTS.md"],
+      "source_of_truth": false
+    },
+
+    {
+      "id": "root/CLAUDE_MD",
+      "path": "CLAUDE.md",
+      "type": "agent_spec",
+      "title": "Claude Role Definition",
+      "pillar": "city-storytelling",
+      "summary": "Role and operating rules for Claude AI in this repository: civic research guide, Socratic coach, MVP advisor. Defines what Claude should and should not do, preferred and weak solution patterns, and the default task sequence.",
+      "tags": ["claude", "role-definition", "operating-rules", "guardrails"],
+      "recommended_audience": ["Claude AI agents"],
+      "read_after": [],
+      "source_of_truth": true
+    },
+
+    {
+      "id": "core/pillar_overview",
+      "path": "00_core/00_pillar_overview.md",
+      "type": "core_doc",
+      "title": "Pillar Overview",
+      "pillar": "city-storytelling",
+      "summary": "Overview of the A City That Tells Its Stories pillar: arts and cultural event discovery, resident civic storytelling, neighborhood history preservation, and Richmond's diverse narratives. Foundational context for all research.",
+      "tags": ["pillar-overview", "problem-space", "arts-discovery", "civic-storytelling", "neighborhood-history"],
+      "recommended_audience": ["all teams", "orientation phase"],
+      "read_after": ["README.md"],
+      "source_of_truth": true
+    },
+
+    {
+      "id": "core/map_alignment",
+      "path": "00_core/01_map_alignment.md",
+      "type": "core_doc",
+      "title": "MAP Alignment",
+      "pillar": "city-storytelling",
+      "summary": "Alignment of this pillar with Mayor's Action Plan (MAP) Pillar 7 goals including oral histories of public servants, Black empowerment visitor guides, and Virginia 250 commemorations. Explains the civic and strategic context for hackathon solutions.",
+      "tags": ["map", "mayors-action-plan", "strategic-alignment", "oral-history", "Virginia-250"],
+      "recommended_audience": ["teams needing policy context", "demo presentations"],
+      "read_after": ["00_core/00_pillar_overview.md"],
+      "source_of_truth": true
+    },
+
+    {
+      "id": "problem_space/bluesky",
+      "path": "01_problem_space/01_bluesky_problem_statements.md",
+      "type": "problem_statement",
+      "title": "Blue-Sky Problem Statements",
+      "pillar": "city-storytelling",
+      "summary": "Broad, unconstrained problem statements for Pillar 7 exploration. Includes 'Exploring Richmond Through Its Stories' which scored highest across all blue-sky statements in the hackathon rubric.",
+      "tags": ["problem-statements", "bluesky", "ideation", "exploration", "highest-scoring"],
+      "recommended_audience": ["teams in orientation phase", "teams still choosing a problem"],
+      "read_after": ["00_core/00_pillar_overview.md"],
+      "source_of_truth": true
+    },
+
+    {
+      "id": "problem_space/targeted",
+      "path": "01_problem_space/02_targeted_problem_statements.md",
+      "type": "problem_statement",
+      "title": "Targeted Problem Statements (Scored)",
+      "pillar": "city-storytelling",
+      "summary": "Two scored, rubric-evaluated problem statements: Arts & Cultural Event Discovery (27/32, Strong) and Resident Stories as Civic Insight (26/32, Strong). Both score 4/4 on accessibility — highest across all seven hackathon pillars.",
+      "tags": ["problem-statements", "scored", "arts-discovery", "civic-storytelling", "rubric", "accessibility"],
+      "recommended_audience": ["all teams choosing a problem", "Phase 2"],
+      "read_after": ["01_problem_space/01_bluesky_problem_statements.md"],
+      "source_of_truth": true
+    },
+
+    {
+      "id": "data/index",
+      "path": "02_data/00_index.md",
+      "type": "data_file",
+      "title": "Data Index",
+      "pillar": "city-storytelling",
+      "summary": "Index of available data sources for the City Storytelling pillar. Points to the source inventory CSV and explains data categories including event feeds, GIS layers, and oral history archives.",
+      "tags": ["data-index", "data-sources", "inventory"],
+      "recommended_audience": ["teams identifying data sources", "Phase 3"],
+      "read_after": ["01_problem_space/02_targeted_problem_statements.md"],
+      "source_of_truth": false
+    },
+
+    {
+      "id": "data/source_inventory",
+      "path": "02_data/source_inventory.csv",
+      "type": "data_file",
+      "title": "Source Inventory (CSV)",
+      "pillar": "city-storytelling",
+      "summary": "Structured inventory of public data sources with access mode, key fields, and notes. Primary reference for data availability including Eventbrite API, GeoHub layers, and institutional digital collections.",
+      "tags": ["data-sources", "csv", "eventbrite", "geohub", "public-data", "access-modes"],
+      "recommended_audience": ["developers", "data researchers", "teams building data-dependent MVPs"],
+      "read_after": ["02_data/00_index.md"],
+      "source_of_truth": true
+    },
+
+    {
+      "id": "artifacts/user_journeys",
+      "path": "03_artifacts/user_journeys.md",
+      "type": "synthesized_artifact",
+      "title": "User Journeys",
+      "pillar": "city-storytelling",
+      "summary": "Structured journey maps for primary Pillar 7 user personas: arts-curious resident discovering events, longtime resident contributing neighborhood stories. Useful for MVP design and demo narrative.",
+      "tags": ["user-journeys", "personas", "arts-resident", "storyteller", "ux"],
+      "recommended_audience": ["teams designing user flows", "demo preparation"],
+      "read_after": ["03_artifacts/prototype_recommendations.md"],
+      "source_of_truth": false
+    },
+
+    {
+      "id": "artifacts/prototype_recommendations",
+      "path": "03_artifacts/prototype_recommendations.md",
+      "type": "synthesized_artifact",
+      "title": "Prototype Recommendations",
+      "pillar": "city-storytelling",
+      "summary": "Seeded MVP concepts for Pillar 7: arts & culture map, neighborhood history explorer, and story collection portal. Includes ranked viability and recommended starting direction.",
+      "tags": ["prototype", "mvp-concepts", "recommendations", "arts-map", "story-collection"],
+      "recommended_audience": ["teams choosing an MVP direction", "Phase 4"],
+      "read_after": ["research_notes.md"],
+      "source_of_truth": false
+    },
+
+    {
+      "id": "artifacts/benchmark_scan",
+      "path": "03_artifacts/benchmark_scan.md",
+      "type": "synthesized_artifact",
+      "title": "Benchmark Scan",
+      "pillar": "city-storytelling",
+      "summary": "Scan of comparable civic arts and storytelling tools from other jurisdictions. Synthesizes E section findings on prior art for both event aggregation and community story collection.",
+      "tags": ["benchmarks", "prior-art", "comparable-tools", "arts-aggregators", "story-tools"],
+      "recommended_audience": ["teams researching what already exists", "Phase 3"],
+      "read_after": ["research_notes.md"],
+      "source_of_truth": false
+    },
+
+    {
+      "id": "artifacts/continuation_plan",
+      "path": "03_artifacts/continuation_plan.md",
+      "type": "synthesized_artifact",
+      "title": "Continuation Plan",
+      "pillar": "city-storytelling",
+      "summary": "Post-hackathon pathways for continuing Pillar 7 work: potential institutional hosts (The Valentine, Richmond GeoHub, VCU Libraries), potential champions, and next steps for each prototype direction.",
+      "tags": ["continuation", "post-hackathon", "partners", "The-Valentine", "GeoHub", "next-steps"],
+      "recommended_audience": ["teams planning beyond the weekend", "continuity_planner skill"],
+      "read_after": ["03_artifacts/prototype_recommendations.md"],
+      "source_of_truth": false
+    },
+
+    {
+      "id": "artifacts/richmond_arts_data_landscape",
+      "path": "03_artifacts/richmond_arts_data_landscape.md",
+      "type": "synthesized_artifact",
+      "title": "Richmond Arts Data Landscape",
+      "pillar": "city-storytelling",
+      "summary": "Synthesized map of Richmond's arts data landscape: where event data lives, which sources are machine-readable, and which require manual outreach. Useful companion to the D section research reports.",
+      "tags": ["arts-data-landscape", "data-sources", "event-feeds", "synthesis"],
+      "recommended_audience": ["teams building arts aggregators", "data researchers"],
+      "read_after": ["02_data/source_inventory.csv"],
+      "source_of_truth": false
+    },
+
+    {
+      "id": "build_guides/mvp_shapes",
+      "path": "04_build_guides/01_mvp_shapes.md",
+      "type": "build_guide",
+      "title": "MVP Shapes",
+      "pillar": "city-storytelling",
+      "summary": "Defined MVP shapes for Pillar 7: arts event aggregator, arts & culture map, story collection portal, neighborhood history explorer. Each shape includes scope boundaries and Saturday milestones.",
+      "tags": ["mvp-shapes", "scope", "arts-aggregator", "story-collection", "milestones"],
+      "recommended_audience": ["teams in Phase 4-5", "teams locking MVP scope"],
+      "read_after": ["01_problem_space/02_targeted_problem_statements.md"],
+      "source_of_truth": false
+    },
+
+    {
+      "id": "build_guides/recommended_architectures",
+      "path": "04_build_guides/02_recommended_architectures.md",
+      "type": "build_guide",
+      "title": "Recommended Architectures",
+      "pillar": "city-storytelling",
+      "summary": "Technical architecture recommendations for Pillar 7 prototypes: Eventbrite + iCal aggregation pipeline, GeoHub map overlay approach, and story submission with moderation queue. Prioritizes weekend-viable technical choices.",
+      "tags": ["architecture", "Eventbrite", "iCal", "GeoHub", "story-submission", "technical-design"],
+      "recommended_audience": ["developers", "teams in Phase 5-6"],
+      "read_after": ["04_build_guides/01_mvp_shapes.md"],
+      "source_of_truth": false
+    },
+
+    {
+      "id": "build_guides/demo_advice",
+      "path": "04_build_guides/05_demo_advice.md",
+      "type": "build_guide",
+      "title": "Demo Advice",
+      "pillar": "city-storytelling",
+      "summary": "Guidance for demo preparation: how to structure the 90-second pitch, what judges look for in Pillar 7 demos, and how to credibly show civic impact with a hackathon prototype.",
+      "tags": ["demo", "pitch", "90-second", "judges", "civic-impact"],
+      "recommended_audience": ["teams in Phase 8-9", "demo preparation"],
+      "read_after": ["research/I1_demo_archetypes.md"],
+      "source_of_truth": false
+    },
+
+    {
+      "id": "skill/repo_memory",
+      "path": "skills/repo_memory/SKILL.md",
+      "type": "skill",
+      "title": "Skill: repo_memory",
+      "pillar": "city-storytelling",
+      "summary": "Reconstruct repository state: read project artifacts, detect stage of work, summarize progress.",
+      "tags": ["skill", "repo-memory", "context-reconstruction"],
+      "recommended_audience": ["Hackbot at session start"],
+      "read_after": [],
+      "source_of_truth": true
+    },
+
+    {
+      "id": "skill/problem_scoping",
+      "path": "skills/problem_scoping/SKILL.md",
+      "type": "skill",
+      "title": "Skill: problem_scoping",
+      "pillar": "city-storytelling",
+      "summary": "Help teams choose a strong problem: analyze problem statements, rank opportunities, identify realistic directions.",
+      "tags": ["skill", "problem-scoping", "problem-selection"],
+      "recommended_audience": ["teams in orientation or Phase 2"],
+      "read_after": ["AGENTS.md"],
+      "source_of_truth": true
+    },
+
+    {
+      "id": "skill/research_runner",
+      "path": "skills/research_runner/SKILL.md",
+      "type": "skill",
+      "title": "Skill: research_runner",
+      "pillar": "city-storytelling",
+      "summary": "Execute research prompts and collect findings: run research prompts, extract sources, summarize evidence.",
+      "tags": ["skill", "research-runner", "evidence-collection"],
+      "recommended_audience": ["teams in Phase 3"],
+      "read_after": ["AGENTS.md"],
+      "source_of_truth": true
+    },
+
+    {
+      "id": "skill/dataset_mapper",
+      "path": "skills/dataset_mapper/SKILL.md",
+      "type": "skill",
+      "title": "Skill: dataset_mapper",
+      "pillar": "city-storytelling",
+      "summary": "Identify usable datasets: scan data directory, identify schemas, highlight gaps relevant to arts event feeds and oral history archives.",
+      "tags": ["skill", "dataset-mapper", "data-discovery"],
+      "recommended_audience": ["teams identifying data sources", "Phase 3"],
+      "read_after": ["AGENTS.md"],
+      "source_of_truth": true
+    },
+
+    {
+      "id": "skill/opportunity_mapper",
+      "path": "skills/opportunity_mapper/SKILL.md",
+      "type": "skill",
+      "title": "Skill: opportunity_mapper",
+      "pillar": "city-storytelling",
+      "summary": "Translate research into buildable solution opportunities: match problems to solution patterns, suggest MVP directions for arts discovery and civic storytelling.",
+      "tags": ["skill", "opportunity-mapper", "mvp-directions"],
+      "recommended_audience": ["teams in Phase 4"],
+      "read_after": ["AGENTS.md"],
+      "source_of_truth": true
+    },
+
+    {
+      "id": "skill/mvp_designer",
+      "path": "skills/mvp_designer/SKILL.md",
+      "type": "skill",
+      "title": "Skill: mvp_designer",
+      "pillar": "city-storytelling",
+      "summary": "Turn an opportunity into a concrete MVP: user flow, architecture, scope boundaries.",
+      "tags": ["skill", "mvp-designer", "user-flow", "architecture"],
+      "recommended_audience": ["teams in Phase 5"],
+      "read_after": ["AGENTS.md"],
+      "source_of_truth": true
+    },
+
+    {
+      "id": "skill/risk_review",
+      "path": "skills/risk_review/SKILL.md",
+      "type": "skill",
+      "title": "Skill: risk_review",
+      "pillar": "city-storytelling",
+      "summary": "Prevent civic-tech mistakes: checks for hallucinated services, consent gaps, representational bias, copyright issues, and misleading claims about completeness or City endorsement.",
+      "tags": ["skill", "risk-review", "consent", "bias", "guardrails"],
+      "recommended_audience": ["all teams before demo", "Phase 7"],
+      "read_after": ["AGENTS.md"],
+      "source_of_truth": true
+    },
+
+    {
+      "id": "skill/demo_coach",
+      "path": "skills/demo_coach/SKILL.md",
+      "type": "skill",
+      "title": "Skill: demo_coach",
+      "pillar": "city-storytelling",
+      "summary": "Help teams present effectively: demo script, narrative structure, judge-facing explanation.",
+      "tags": ["skill", "demo-coach", "pitch", "presentation"],
+      "recommended_audience": ["teams in Phase 8-9"],
+      "read_after": ["AGENTS.md"],
+      "source_of_truth": true
+    },
+
+    {
+      "id": "skill/repo_librarian",
+      "path": "skills/repo_librarian/SKILL.md",
+      "type": "skill",
+      "title": "Skill: repo_librarian",
+      "pillar": "city-storytelling",
+      "summary": "Help users navigate repository knowledge: answer questions about where files are, what sections cover which topics, and how to use the corpus for specific research needs.",
+      "tags": ["skill", "repo-librarian", "navigation", "corpus-navigation"],
+      "recommended_audience": ["all users needing navigation help"],
+      "read_after": ["AGENTS.md"],
+      "source_of_truth": true
+    },
+
+    {
+      "id": "skill/continuity_planner",
+      "path": "skills/continuity_planner/SKILL.md",
+      "type": "skill",
+      "title": "Skill: continuity_planner",
+      "pillar": "city-storytelling",
+      "summary": "Identify post-hackathon continuation opportunities: potential institutional partners (The Valentine, GeoHub, VCU), artifacts worth continuing, next steps.",
+      "tags": ["skill", "continuity-planner", "post-hackathon", "partners"],
+      "recommended_audience": ["teams planning beyond the weekend"],
+      "read_after": ["AGENTS.md"],
+      "source_of_truth": true
+    },
+
+    {
+      "id": "skill/research_search",
+      "path": "skills/research_search/SKILL.md",
+      "type": "skill",
+      "title": "Skill: research_search",
+      "pillar": "city-storytelling",
+      "summary": "Search the research corpus for relevant files and findings: keyword-based navigation of the 51 research reports using index.json and section mappings.",
+      "tags": ["skill", "research-search", "corpus-navigation", "keyword-search"],
+      "recommended_audience": ["teams in research phase", "agents navigating corpus"],
+      "read_after": ["AGENTS.md"],
+      "source_of_truth": true
+    },
+
+    {
+      "id": "skill/research_corpus_navigation",
+      "path": "skills/research_corpus_navigation/SKILL.md",
+      "type": "skill",
+      "title": "Skill: research_corpus_navigation",
+      "pillar": "city-storytelling",
+      "summary": "Map a user question to the correct section and specific research reports using index.json and the section-to-topic mapping. Prevents agents from diving into raw files without context.",
+      "tags": ["skill", "research-corpus-navigation", "index-navigation", "question-routing"],
+      "recommended_audience": ["AI agents answering research questions"],
+      "read_after": ["CORPUS_GUIDE.md"],
+      "source_of_truth": true
+    },
+
+    {
+      "id": "skill/cross_report_synthesis",
+      "path": "skills/cross_report_synthesis/SKILL.md",
+      "type": "skill",
+      "title": "Skill: cross_report_synthesis",
+      "pillar": "city-storytelling",
+      "summary": "Synthesize findings from multiple research reports with source traceability, tension identification, and gap documentation. Prevents blending claims from different sources without attribution.",
+      "tags": ["skill", "cross-report-synthesis", "source-traceability", "claim-mapping"],
+      "recommended_audience": ["AI agents answering cross-section questions"],
+      "read_after": ["skills/research_corpus_navigation/SKILL.md"],
+      "source_of_truth": true
+    },
+
+    {
+      "id": "skill/evidence_grounded_answering",
+      "path": "skills/evidence_grounded_answering/SKILL.md",
+      "type": "skill",
+      "title": "Skill: evidence_grounded_answering",
+      "pillar": "city-storytelling",
+      "summary": "Answer only from corpus content with 4-level claim classification (confirmed/stated/uncertain/not found) and anti-fabrication checks. Required for any factual claim about Richmond programs, data, or services.",
+      "tags": ["skill", "evidence-grounded-answering", "anti-fabrication", "claim-classification"],
+      "recommended_audience": ["AI agents making factual claims"],
+      "read_after": ["skills/research_corpus_navigation/SKILL.md"],
+      "source_of_truth": true
+    },
+
+    {
+      "id": "skill/report_update_protocol",
+      "path": "skills/report_update_protocol/SKILL.md",
+      "type": "skill",
+      "title": "Skill: report_update_protocol",
+      "pillar": "city-storytelling",
+      "summary": "Safely add or update research reports and keep indexes in sync. 7-step process with validation checklist to ensure no orphaned files or broken navigation.",
+      "tags": ["skill", "report-update-protocol", "corpus-maintenance", "index-sync"],
+      "recommended_audience": ["corpus maintainers", "AI agents updating corpus"],
+      "read_after": ["MAINTENANCE.md"],
+      "source_of_truth": true
+    },
+
+    {
+      "id": "template/project_one_pager",
+      "path": "99_templates/project_one_pager_template.md",
+      "type": "template",
+      "title": "Project One-Pager Template",
+      "pillar": "city-storytelling",
+      "summary": "Template for locking MVP scope: user, problem, data, AI role, constraints, demo path, and the key sentence format for scope commitment.",
+      "tags": ["template", "scope-lock", "project-brief", "mvp"],
+      "recommended_audience": ["teams in Phase 5"],
+      "read_after": ["01_problem_space/02_targeted_problem_statements.md"],
+      "source_of_truth": false
+    },
+
+    {
+      "id": "template/decision_memo",
+      "path": "99_templates/decision_memo.md",
+      "type": "template",
+      "title": "Decision Memo Template",
+      "pillar": "city-storytelling",
+      "summary": "Template for documenting the chosen problem, user, rationale, rejected alternatives, and risks. Output of Phase 2.",
+      "tags": ["template", "decision-memo", "problem-selection", "rationale"],
+      "recommended_audience": ["teams completing Phase 2"],
+      "read_after": ["01_problem_space/02_targeted_problem_statements.md"],
+      "source_of_truth": false
+    },
+
+    {
+      "id": "template/team_profile",
+      "path": "99_templates/team_profile_template.md",
+      "type": "template",
+      "title": "Team Profile Template",
+      "pillar": "city-storytelling",
+      "summary": "Template for creating a team profile that enables Hackbot to personalize communication, map tasks to member skills, and follow team preferences.",
+      "tags": ["template", "team-profile", "hackbot-personalization"],
+      "recommended_audience": ["all teams at hackathon start"],
+      "read_after": ["README.md"],
+      "source_of_truth": false
+    },
+
+    {
+      "id": "template/working_direction_note",
+      "path": "99_templates/working_direction_note.md",
+      "type": "template",
+      "title": "Working Direction Note Template",
+      "pillar": "city-storytelling",
+      "summary": "5-bullet template for capturing a team's working direction at the end of Phase 1: candidate problem, likely user, why it matters, weekend-buildability, biggest uncertainty.",
+      "tags": ["template", "working-direction", "orientation", "phase-1"],
+      "recommended_audience": ["teams completing Phase 1"],
+      "read_after": ["00_core/00_pillar_overview.md"],
+      "source_of_truth": false
+    },
+
+    {
+      "id": "research/corpus",
+      "path": "research/index.json",
+      "type": "manifest",
+      "title": "Research Corpus Index",
+      "pillar": "city-storytelling",
+      "summary": "Machine-readable index of all 51 research reports: id, section, title, summary, key_terms. Use this to identify relevant files before reading them.",
+      "tags": ["research-index", "navigation", "machine-readable", "51-reports"],
+      "recommended_audience": ["AI agents", "teams searching for specific topics"],
+      "read_after": ["CORPUS_GUIDE.md"],
+      "source_of_truth": false
+    },
+
+    {
+      "id": "research/INDEX_md",
+      "path": "research/INDEX.md",
+      "type": "nav_file",
+      "title": "Research Directory Index (Human-Readable)",
+      "pillar": "city-storytelling",
+      "summary": "Human-readable table of contents for all 51 research reports, organized by section. Use to browse and identify relevant files before reading them.",
+      "tags": ["research-index", "navigation", "human-readable", "table-of-contents"],
+      "recommended_audience": ["all users browsing the research corpus"],
+      "read_after": ["CORPUS_GUIDE.md"],
+      "source_of_truth": false
+    }
+
+  ]
+}

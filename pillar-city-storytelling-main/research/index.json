@@ -1,0 +1,359 @@
+[
+  {
+    "id": "00_pillar_summary_context",
+    "section": "context",
+    "title": "Richmond Stories, Real Tools: Weekend Builds That Last",
+    "summary": "Overview of Pillar 7 'A City That Tells Its Stories,' covering two core hackathon challenges: automating arts and cultural event discovery and capturing residents' lived experiences. Frames MAP 2025 priorities that anchor viable prototypes and identifies the primary failure mode of manual curation dependency.",
+    "key_terms": ["Pillar 7", "arts event discovery", "resident storytelling", "manual curation", "MAP 2025", "consent-first"]
+  },
+  {
+    "id": "01_master_research_prompt",
+    "section": "context",
+    "title": "Richmond Arts Discovery Now: Feeds, Maps, and Weekend-Ready Builds",
+    "summary": "Master research framework covering arts event aggregation, civic storytelling, and the data infrastructure available for weekend hackathon builds in Richmond. Establishes the research foundation for all subsequent deep-research reports in this pillar.",
+    "key_terms": ["research framework", "arts aggregation", "civic storytelling", "data infrastructure", "weekend build", "Richmond"]
+  },
+  {
+    "id": "90_top_10_research_questions",
+    "section": "cross-cutting",
+    "title": "Richmond Arts Data Playbook — Buildable Feeds, Blocked APIs, and Partner Paths",
+    "summary": "Top 10 research questions synthesized into actionable findings on Richmond arts data availability, blocked APIs (Facebook Events), viable feed sources, and partner institution paths. Identifies which data questions can be answered in 48 hours versus which require pre-event partnership.",
+    "key_terms": ["research questions", "arts data", "Facebook Events API", "feed sources", "partner institutions", "data availability"]
+  },
+  {
+    "id": "91_top_10_hypotheses_to_test",
+    "section": "cross-cutting",
+    "title": "Building Richmond's Living Arts & Memory Network: What's Viable Now, What's Not",
+    "summary": "Ten testable hypotheses about Richmond's arts discovery and civic storytelling landscape, covering data sufficiency for automated aggregation, resident willingness to submit stories, and institutional partnership feasibility within hackathon constraints.",
+    "key_terms": ["hypotheses", "viability", "data sufficiency", "story submission", "institutional partnership", "hackathon constraints"]
+  },
+  {
+    "id": "92_red_flags",
+    "section": "cross-cutting",
+    "title": "From Red Flags to Roadmap: Building Equitable Richmond Story Tools",
+    "summary": "Warning signs and critical failure risks for City Storytelling prototypes, including representational bias in arts data, consent gaps in story collection, and dead-end API dependencies. Provides a roadmap for avoiding common pitfalls.",
+    "key_terms": ["red flags", "representational bias", "consent gaps", "API failures", "equitable design", "failure patterns"]
+  },
+  {
+    "id": "93_missing_information_gaps",
+    "section": "cross-cutting",
+    "title": "Richmond Arts Discovery, Fast-Tracked: Closing 7 Gaps in 48 Hours",
+    "summary": "Critical information gaps teams must close before building: unverified event feed availability, institutional API access, consent infrastructure for story tools, and neighborhood coverage blind spots. Includes strategies to resolve each gap within the hackathon timeframe.",
+    "key_terms": ["information gaps", "event feeds", "API access", "consent infrastructure", "neighborhood coverage", "gap closing"]
+  },
+  {
+    "id": "A1_problem_landscape_arts_discovery",
+    "section": "A",
+    "title": "Richmond Arts Discovery: Fragmented Channels, Missed Audiences, Fixable Gaps",
+    "summary": "Detailed mapping of Richmond's arts event discovery landscape showing fragmentation across Visit Richmond, Venture Richmond, CultureWorks, VPM, and Reddit. Documents geographic exclusions, lead-time barriers, and the broken structured data causing SEO blind spots for community calendars.",
+    "key_terms": ["fragmentation", "Visit Richmond", "Venture Richmond", "CultureWorks", "geographic exclusion", "discovery gaps"]
+  },
+  {
+    "id": "A2_problem_landscape_civic_storytelling",
+    "section": "A",
+    "title": "Richmond's Missing Voices: Bridging Resident Narratives and City Decision-Making",
+    "summary": "Problem landscape for resident civic storytelling in Richmond: how community voices are systematically excluded from City decision-making, the gap between public comment structures and authentic narrative capture, and why technology can help without replacing human facilitation.",
+    "key_terms": ["missing voices", "civic storytelling", "community narratives", "public comment", "decision-making", "facilitation"]
+  },
+  {
+    "id": "A3_problem_landscape_compare_statements",
+    "section": "A",
+    "title": "Pillar 7, Right-Now ROI: Choosing Between Arts Discovery and Resident Stories in Richmond",
+    "summary": "Comparative analysis of the two core Pillar 7 problem statements — arts event discovery and resident storytelling — scored against hackathon viability criteria. Identifies tradeoffs in data availability, demo quality, and continuation potential to help teams choose their direction.",
+    "key_terms": ["comparison", "arts discovery", "resident stories", "hackathon viability", "ROI", "problem selection"]
+  },
+  {
+    "id": "A4_problem_landscape_cultural_equity",
+    "section": "A",
+    "title": "From Broad Street to the Bottom: Fixing Richmond's Cultural Visibility Gap",
+    "summary": "Cultural equity dimensions of Richmond's arts discovery problem: how existing channels systematically under-represent neighborhoods outside the downtown core, including the Bottom, Church Hill, and South Side. Documents the structural causes and proposes targeted visibility fixes.",
+    "key_terms": ["cultural equity", "visibility gap", "neighborhood representation", "Church Hill", "South Side", "structural exclusion"]
+  },
+  {
+    "id": "A5_problem_landscape_neighborhood_change",
+    "section": "A",
+    "title": "Richmond's Rapid Neighborhood Shift: Capturing Community Memory Before It's Gone",
+    "summary": "Problem framing around Richmond's accelerating neighborhood change and the urgent need to capture community memory from longtime residents before displacement erases it. Documents specific neighborhoods at risk and the institutional resources available for memory preservation.",
+    "key_terms": ["neighborhood change", "community memory", "displacement", "preservation urgency", "longtime residents", "gentrification"]
+  },
+  {
+    "id": "B1_users_arts_curious_resident",
+    "section": "B",
+    "title": "Unlocking RVA Arts Discovery: Persona-Driven Fixes for a Fragmented Scene",
+    "summary": "Detailed persona for the arts-curious Richmond resident: discovery behaviors, friction points across current channels, job-to-be-done, and what a working solution must provide. Grounds the user story in observed channel fragmentation and workarounds like Reddit.",
+    "key_terms": ["arts-curious resident", "discovery behavior", "friction points", "user persona", "Reddit workaround", "channel fragmentation"]
+  },
+  {
+    "id": "B2_users_artist_venue",
+    "section": "B",
+    "title": "Richmond Arts B2 Persona: Low-Burden Visibility via Smart Aggregation",
+    "summary": "Persona for Richmond artists and small venues: the administrative burden of submitting to multiple calendars, differing image requirements and lead times, and what a low-burden aggregation solution must do to earn adoption from this audience.",
+    "key_terms": ["artist persona", "venue persona", "administrative burden", "multi-calendar submission", "lead time", "low-burden solution"]
+  },
+  {
+    "id": "B3_users_longtime_resident_storyteller",
+    "section": "B",
+    "title": "Unlocking Church Hill's Living Memory — A trust-first, offline-ready path to engage longtime residents",
+    "summary": "Persona for longtime Richmond residents as storytellers, with emphasis on Church Hill and historically Black neighborhoods. Covers trust barriers, digital access gaps, offline-ready design requirements, and the role of community intermediaries in story collection.",
+    "key_terms": ["longtime residents", "Church Hill", "trust barriers", "digital equity", "offline-ready", "community intermediaries"]
+  },
+  {
+    "id": "B4_users_stakeholders_map",
+    "section": "B",
+    "title": "Pillar 7, Powered: The Stakeholder Map to Launch and Sustain Richmond Storytelling Prototypes",
+    "summary": "Full stakeholder map for Pillar 7: named champions (Todd Waldo, Meg Hughes, Sylvio Lynch III, Chaya Braxton), institutional partners (The Valentine, Black History Museum, VCU Libraries), and city departments. Identifies which stakeholders can host, fund, or champion a post-hackathon continuation.",
+    "key_terms": ["stakeholders", "Todd Waldo", "Meg Hughes", "The Valentine", "champions", "institutional partners"]
+  },
+  {
+    "id": "B5_users_digital_equity",
+    "section": "B",
+    "title": "Closing Richmond's Digital Gap: Phone-First, Language-Ready Civic Engagement for Seniors, LEP, and Low-Income Residents",
+    "summary": "Digital equity dimensions of Pillar 7 user populations: seniors, limited English proficiency residents, and low-income households who cannot access discovery or storytelling tools without mobile-first, low-bandwidth, multilingual design. Documents specific Richmond demographics and access constraints.",
+    "key_terms": ["digital equity", "phone-first", "multilingual", "seniors", "LEP residents", "low-income households"]
+  },
+  {
+    "id": "C1_services_arts_orgs_landscape",
+    "section": "C",
+    "title": "Unlocking Richmond Arts: Where Event Data Lives and How to Ingest It",
+    "summary": "Survey of Richmond arts organizations as event data sources: which institutions maintain public calendars, what formats they publish (RSS, iCal, Eventbrite), and which require direct outreach. Provides a practical ingestion strategy for aggregation prototypes.",
+    "key_terms": ["arts organizations", "event data sources", "RSS", "iCal", "Eventbrite", "ingestion strategy"]
+  },
+  {
+    "id": "C2_services_existing_aggregators",
+    "section": "C",
+    "title": "Cracking Arts Discovery in RVA: What Today's Calendars Miss",
+    "summary": "Audit of existing Richmond arts event aggregators (Visit Richmond, CultureWorks, VPM Artsline, Richmond Magazine): what each covers, what each misses, and the gap left for a community-focused aggregation tool. Identifies non-overlapping coverage as the core structural problem.",
+    "key_terms": ["existing aggregators", "Visit Richmond", "CultureWorks", "VPM Artsline", "coverage gaps", "structural fragmentation"]
+  },
+  {
+    "id": "C3_services_oral_history_institutions",
+    "section": "C",
+    "title": "Richmond's Oral Histories, Mapped: Where Stories Live, Who Can Hear Them, What to Build Next",
+    "summary": "Inventory of Richmond's oral history institutions and digital collections: The Valentine's Richmond Stories, Library of Virginia, VCU Libraries Community Digitization Program, and Richmond Public Library. Covers access modes, rights status, and integration pathways for hackathon tools.",
+    "key_terms": ["oral history", "The Valentine", "Library of Virginia", "VCU Libraries", "digital collections", "community digitization"]
+  },
+  {
+    "id": "C4_services_city_communications",
+    "section": "C",
+    "title": "From Silos to Stories: Unifying Richmond's Arts Communications",
+    "summary": "Analysis of Richmond City communications channels for arts and culture: Office of Strategic Communications, Parks and Recreation event calendars, and departmental silos. Documents the coordination failure that prevents city channels from surfacing community arts events.",
+    "key_terms": ["city communications", "Office of Strategic Communications", "Parks and Recreation", "silos", "coordination failure", "departmental fragmentation"]
+  },
+  {
+    "id": "C5_services_gaps",
+    "section": "C",
+    "title": "Where Richmond's Arts Ecosystem Loses Residents: Crack Points and Fast Fixes",
+    "summary": "Specific crack points where Richmond's arts services ecosystem loses residents seeking cultural connection: the gap between discovery and participation, the submission burden for organizers, and the absence of a single trusted aggregation point. Proposes targeted fast fixes.",
+    "key_terms": ["service gaps", "crack points", "discovery to participation", "submission burden", "aggregation gap", "fast fixes"]
+  },
+  {
+    "id": "D1_data_eventbrite",
+    "section": "D",
+    "title": "Eventbrite API for Richmond Arts: Capabilities, Gaps, and a Multi-Source Strategy",
+    "summary": "Technical assessment of the Eventbrite API for Richmond arts aggregation: OAuth 2.0 requirements, search endpoint capabilities, pagination limits, and the critical coverage gap where flagship institutions use independent ticketing platforms. Recommends Eventbrite as a secondary pillar in a multi-source architecture.",
+    "key_terms": ["Eventbrite API", "OAuth 2.0", "multi-source architecture", "ticketing platforms", "coverage gaps", "pagination"]
+  },
+  {
+    "id": "D2_data_social_media_events",
+    "section": "D",
+    "title": "Richmond Arts Aggregation in 2026: What Social Event Data You Can Actually Use",
+    "summary": "Assessment of social media event data availability for Richmond arts aggregation in 2026: Facebook Events API access restrictions since 2018, Instagram limitations, and what community social channels (Reddit r/rva) can realistically contribute to an aggregation strategy.",
+    "key_terms": ["social media", "Facebook Events API", "2018 restrictions", "Reddit r/rva", "Instagram", "accessible data"]
+  },
+  {
+    "id": "D3_data_rss_calendar_feeds",
+    "section": "D",
+    "title": "RVA Arts Events, Fast: A Practical Map to RSS and iCal Sources",
+    "summary": "Practical inventory of RSS and iCal calendar feeds from Richmond arts organizations, venues, and community calendars. Identifies which sources publish machine-readable feeds, feed quality and update cadence, and a recommended starting set for a weekend prototype.",
+    "key_terms": ["RSS feeds", "iCal", "calendar feeds", "Richmond venues", "update cadence", "machine-readable"]
+  },
+  {
+    "id": "D4_data_oral_history_archives",
+    "section": "D",
+    "title": "Richmond Oral Histories Online: What's Usable Now and How to Scale",
+    "summary": "Inventory of Richmond's online oral history archives: access modes, rights status, embedding capabilities, and API availability for The Valentine, Library of Virginia, VCU, and Richmond Public Library digital collections. Identifies what is usable in a 48-hour sprint versus what requires institutional partnership.",
+    "key_terms": ["oral history archives", "digital collections", "access modes", "rights status", "API availability", "embedding"]
+  },
+  {
+    "id": "D5_data_gis_arts_districts",
+    "section": "D",
+    "title": "Mapping Richmond's Arts Footprint — Official Districts, Reliable Boundaries, and Smart Overlays",
+    "summary": "GIS data available for Richmond arts mapping: Arts & Cultural District Incentive Zones (ArcGIS FeatureServer), City Old & Historic Districts (45 records), and City Old & Historic Sites via Richmond GeoHub. Confirms these layers are publicly accessible API-ready and hackathon-viable.",
+    "key_terms": ["GIS", "Arts District", "ArcGIS", "Richmond GeoHub", "Historic Districts", "spatial data"]
+  },
+  {
+    "id": "E1_prior_art_arts_aggregators",
+    "section": "E",
+    "title": "Building a Sustainable Arts Aggregator: National Models, Failure Patterns, and a Richmond Plan",
+    "summary": "National precedents for civic arts event aggregators: what has worked (automated ingest, open standards), what has failed (manual curation models, closed API dependencies), and how Richmond can apply these lessons to build a sustainable prototype.",
+    "key_terms": ["arts aggregators", "national models", "failure patterns", "automated ingest", "open standards", "sustainability"]
+  },
+  {
+    "id": "E2_prior_art_story_collection",
+    "section": "E",
+    "title": "From Voices to Policy: Civic Story Tools That Build Trust and Drive Action in Richmond",
+    "summary": "Prior art in civic story collection tools: StoryCorps, Neighborland, and participatory budgeting platforms that successfully bridged community narratives and government action. Extracts transferable patterns for Richmond's storytelling challenge.",
+    "key_terms": ["civic story tools", "StoryCorps", "Neighborland", "trust building", "policy impact", "participatory design"]
+  },
+  {
+    "id": "E3_prior_art_place_based_stories",
+    "section": "E",
+    "title": "From Street Corners to Stories: Weekend-Buildable Models for Richmond's Place-Based History",
+    "summary": "Place-based storytelling precedents applicable to Richmond: audio tours, neighborhood history explorers, and map-anchored story collections. Identifies weekend-viable technical patterns and existing Richmond content that could seed a prototype.",
+    "key_terms": ["place-based stories", "audio tours", "neighborhood history", "map-anchored", "weekend-viable", "Richmond content"]
+  },
+  {
+    "id": "E4_prior_art_failures",
+    "section": "E",
+    "title": "Stopping the 'Ghost Calendar' Cycle: Lessons from High-Profile Civic Event & Story Platforms",
+    "summary": "Case studies of failed civic arts and story platforms: the 'ghost calendar' pattern where tools launch but die from manual curation overhead, and story collection tools that lost community trust through opaque data handling. Extracts specific anti-patterns Richmond teams must avoid.",
+    "key_terms": ["ghost calendar", "platform failures", "manual curation overhead", "trust failure", "anti-patterns", "case studies"]
+  },
+  {
+    "id": "E5_prior_art_weekend_viable",
+    "section": "E",
+    "title": "48-Hour Build: Highest-Confidence MVPs for Arts + Place",
+    "summary": "Curated set of prior art projects that confirm weekend-viable technical approaches for arts discovery and place-based story tools. Provides confidence evidence that specific patterns (Eventbrite + iCal aggregation, map-anchored story pinning) can be implemented in 48 hours.",
+    "key_terms": ["48-hour build", "weekend viable", "Eventbrite integration", "iCal aggregation", "map-anchored stories", "confidence evidence"]
+  },
+  {
+    "id": "F1_opportunities_ranked",
+    "section": "F",
+    "title": "Richmond Pillar 7 Hackathon: Data-Ready, Demo-Ready Wins in 48 Hours",
+    "summary": "Ranked viability assessment of seven Pillar 7 opportunity spaces: arts & culture map (23/25), neighborhood history explorer (21/25), and story collection portal (20/25) lead. Scoring covers data availability, technical complexity, demo quality, civic impact, and continuation potential.",
+    "key_terms": ["opportunity ranking", "arts culture map", "neighborhood history explorer", "story collection portal", "viability scoring", "data readiness"]
+  },
+  {
+    "id": "F2_opportunities_arts_discovery",
+    "section": "F",
+    "title": "60-Second Arts Discovery for Richmond — A Judge-Ready Hackathon Blueprint",
+    "summary": "Detailed opportunity framing for the arts event discovery solution: exact demo path, data sources to integrate, UI requirements for a judge-ready 90-second demo, and scope boundaries that keep the build achievable in 48 hours.",
+    "key_terms": ["arts discovery opportunity", "judge-ready demo", "90-second demo", "scope boundaries", "data integration", "Eventbrite"]
+  },
+  {
+    "id": "F3_opportunities_civic_stories",
+    "section": "F",
+    "title": "Richmond Civic Storytelling MVP: A Credible, Trust-First Demo Blueprint",
+    "summary": "Opportunity framing for the resident civic storytelling solution: consent-first story submission, theme extraction, and insight surfacing for city staff. Defines the split between story collection and story insight as separate 48-hour scopes.",
+    "key_terms": ["civic storytelling opportunity", "consent-first", "story submission", "theme extraction", "insight surfacing", "trust-first"]
+  },
+  {
+    "id": "F4_opportunities_where_software",
+    "section": "F",
+    "title": "Draw the line: Software's edge vs. human trust in community storytelling",
+    "summary": "Analysis of where software genuinely helps versus where human trust and facilitation cannot be replaced in civic storytelling. Identifies the correct boundary for AI and automation in arts discovery and story collection to avoid overpromising.",
+    "key_terms": ["software limits", "human facilitation", "AI boundaries", "automation edge", "trust requirements", "overpromising"]
+  },
+  {
+    "id": "F5_opportunities_do_not_build",
+    "section": "F",
+    "title": "Richmond F5 Guardrails — What Not To Build (and What To Do Instead)",
+    "summary": "Explicit list of solution approaches to avoid for Pillar 7: comprehensive city-wide calendars requiring manual curation, AI that automates story authenticity judgments, tools requiring Facebook API integration, and systems claiming to represent all Richmond voices. Provides viable alternatives for each anti-pattern.",
+    "key_terms": ["what not to build", "manual curation traps", "Facebook API", "authenticity automation", "representational claims", "alternatives"]
+  },
+  {
+    "id": "G1_risks_representational_bias",
+    "section": "G",
+    "title": "Mind the Megaphone: Designing Arts Dashboards that Don't Drown Out Richmond's Quiet Voices",
+    "summary": "Representational bias risks in arts event aggregation: how Eventbrite-heavy aggregators amplify downtown and ticketed events while suppressing free, neighborhood, and grassroots programming. Documents specific Richmond communities at risk of under-representation and mitigation strategies.",
+    "key_terms": ["representational bias", "quiet voices", "Eventbrite amplification", "neighborhood events", "grassroots programming", "under-representation"]
+  },
+  {
+    "id": "G2_risks_consent_privacy",
+    "section": "G",
+    "title": "Consent and Privacy Blueprint for Civic Storytelling Tools",
+    "summary": "Consent and privacy requirements for civic story collection tools: plain-language consent language, anonymity options, storage and audience disclosure, COPPA compliance for youth, and data retention policies. Based on StoryCorps and government oral history program standards.",
+    "key_terms": ["consent", "privacy", "anonymity", "plain-language disclosure", "COPPA", "data retention"]
+  },
+  {
+    "id": "G3_risks_inclusion",
+    "section": "G",
+    "title": "Bridging Richmond's Cultural Divide: Designing Arts Tech That Reaches Every Neighborhood",
+    "summary": "Inclusion risks for arts tech in Richmond: tools that default to downtown-centric data, English-only interfaces, and high-bandwidth requirements exclude significant portions of the city. Covers design mitigations for multilingual access, mobile-first performance, and geographic equity.",
+    "key_terms": ["inclusion risks", "downtown-centric", "multilingual", "mobile-first", "geographic equity", "design mitigations"]
+  },
+  {
+    "id": "G4_risks_copyright_attribution",
+    "section": "G",
+    "title": "De-risking RVA Arts Data: Rights, Attribution, and Consent Playbook",
+    "summary": "Copyright and attribution risks in arts data aggregation and story collection: scraping restrictions, image rights from event listings, oral history recording rights, and attribution requirements when using institutional digital collections. Provides a rights-clearance playbook.",
+    "key_terms": ["copyright", "attribution", "image rights", "oral history rights", "scraping restrictions", "rights clearance"]
+  },
+  {
+    "id": "G5_risks_guardrails",
+    "section": "G",
+    "title": "Guardrails That Prevent Harm in Civic Arts & Story Tech",
+    "summary": "Mandatory guardrails for Pillar 7 prototypes: stale data handling (last-verified timestamps, auto-expiry), adversarial content in story submissions (pre-publication moderation queues), and anonymity-by-design for sensitive story types. Based on documented failure modes.",
+    "key_terms": ["guardrails", "stale data", "adversarial content", "moderation queues", "anonymity-by-design", "failure prevention"]
+  },
+  {
+    "id": "H1_mvp_48hr_framework",
+    "section": "H",
+    "title": "Thin-Slice Wins: 48-Hour MVPs for Richmond Arts & Stories",
+    "summary": "Forcing function framework for 48-hour MVP design: anchor every decision to what a judge sees at 2pm Sunday. Defines the realistic demo for arts discovery (5-10 real events, one live source, one filter) and for story collection (collection OR insight — not both). Identifies the most common failure pattern.",
+    "key_terms": ["48-hour framework", "demo path", "Sunday 2pm", "thin-slice", "arts demo", "story demo"]
+  },
+  {
+    "id": "H2_mvp_arts_aggregator",
+    "section": "H",
+    "title": "48-Hour Richmond Arts Aggregator: Ship a Credible MVP with Eventbrite + iCal",
+    "summary": "Step-by-step MVP feasibility guide for the arts event aggregator: Eventbrite API setup, iCal feed ingestion, ZIP-code geofencing, event-type tagging, and a UI pattern that demonstrates value in a 90-second demo. Includes Saturday milestones.",
+    "key_terms": ["arts aggregator MVP", "Eventbrite setup", "iCal ingestion", "geofencing", "Saturday milestones", "90-second demo"]
+  },
+  {
+    "id": "H3_mvp_story_collection",
+    "section": "H",
+    "title": "48-Hour Civic Story MVP: Ethical Collection, Honest Insights",
+    "summary": "MVP feasibility guide for the civic story collection tool: consent flow design, submission form requirements, basic theme extraction approach, and how to demo story insight without requiring a full NLP pipeline. Covers the ethical minimum for a publicly-facing story tool.",
+    "key_terms": ["story collection MVP", "consent flow", "submission form", "theme extraction", "ethical minimum", "NLP alternative"]
+  },
+  {
+    "id": "H4_mvp_data_approach",
+    "section": "H",
+    "title": "Richmond Arts MVP: Ship a Credible Demo from Fragmented Data in 48 Hours",
+    "summary": "Data strategy for building a credible Richmond arts MVP despite fragmented sources: prioritization of immediately accessible APIs, fallback to curated static data for institutions without APIs, and a hybrid approach that demonstrates breadth while keeping technical debt low.",
+    "key_terms": ["data strategy", "fragmented sources", "static data fallback", "hybrid approach", "API prioritization", "technical debt"]
+  },
+  {
+    "id": "H5_mvp_scope_boundaries",
+    "section": "H",
+    "title": "Ship Small, Win Big — 48-Hour MVP Scope That Survives Demo Day",
+    "summary": "Scope boundary framework for Pillar 7 MVPs: explicit must-haves, explicit not-this-weekend features, and the key sentence format for locking scope. Covers arts aggregator scope and story collection scope as separate boundary sets.",
+    "key_terms": ["scope boundaries", "must-haves", "not-this-weekend", "scope lock", "demo survival", "feature prioritization"]
+  },
+  {
+    "id": "I1_demo_archetypes",
+    "section": "I",
+    "title": "Winning 90-Second Civic Demos: Show Working Value Fast for Richmond",
+    "summary": "Demo archetypes for Pillar 7 prototypes: the 'show me something real' archetype for arts discovery and the 'show me voices becoming insight' archetype for story collection. Defines the structure and click path for each.",
+    "key_terms": ["demo archetypes", "90-second demo", "working value", "click path", "arts discovery demo", "story insight demo"]
+  },
+  {
+    "id": "I2_demo_arts_aggregator_pitch",
+    "section": "I",
+    "title": "Winning the Richmond Arts Demo: Real Data, Real Users, Real Differentiation",
+    "summary": "Demo pitch guide for the arts event aggregator: how to open with a user pain point, show live data, demonstrate the filter, and close with the continuation story. Includes exact framing language for judges and differentiation from existing calendars.",
+    "key_terms": ["arts aggregator pitch", "live data demo", "judge framing", "differentiation", "continuation story", "pain point opening"]
+  },
+  {
+    "id": "I3_demo_story_collection_pitch",
+    "section": "I",
+    "title": "From Resident Voices to City Decisions: Richmond Demo Strategy",
+    "summary": "Demo pitch guide for the civic story collection tool: how to show consent flow, story submission, and a simple insight summary that makes the civic value legible to judges. Covers how to present a live tool with real (or seed) stories.",
+    "key_terms": ["story collection pitch", "consent flow demo", "insight summary", "civic value", "seed stories", "judge presentation"]
+  },
+  {
+    "id": "I4_demo_credibility",
+    "section": "I",
+    "title": "Richmond Demo Credibility: Local Facts, Real Tech, Trusted Stories",
+    "summary": "Credibility requirements for Pillar 7 demos: using actual Richmond data (not mock data), citing named institutions, showing consent mechanisms, and demonstrating technical legitimacy through live API calls or real stored content.",
+    "key_terms": ["demo credibility", "real Richmond data", "named institutions", "consent mechanisms", "live API", "technical legitimacy"]
+  },
+  {
+    "id": "I5_demo_framing",
+    "section": "I",
+    "title": "Win the First 15 Seconds: Richmond-Proven Framing That Converts Skeptical Civic Judges",
+    "summary": "Opening framing strategies for Pillar 7 demos that convert skeptical civic judges in the first 15 seconds: Richmond-specific statistics, named pain points, and the 'before/after' frame that makes the prototype's value immediately legible.",
+    "key_terms": ["demo framing", "first 15 seconds", "skeptical judges", "before/after frame", "Richmond statistics", "civic value opening"]
+  }
+]

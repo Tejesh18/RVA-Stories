@@ -1,0 +1,17 @@
+Problem Landscape A3 — Comparing the Two Targeted Statements
+
+Compare the two targeted problem statements for Pillar 7 — Arts Event Discovery and Resident Stories as Civic Insight — on the following dimensions:
+
+1. Which problem is more urgent right now, and why?
+2. Which problem has more accessible public data to work with in a weekend?
+3. Which problem has a clearer continuation pathway after the hackathon?
+4. Which problem is more likely to produce a compelling demo?
+5. Which problem has stronger equity implications (D8 accessibility)?
+6. What would a project that addresses BOTH problems look like — and is that realistic for 48 hours?
+
+Use evidence from the Richmond context. Label inferences clearly.
+
+Output
+- Comparative analysis on each dimension
+- Recommendation: which problem should a team prioritize if they can only do one
+- Conditions under which a team might successfully address both

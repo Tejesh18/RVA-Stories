@@ -1,0 +1,16 @@
+Pillar Summary (Context Only)
+
+Core challenge
+Pillar 7, A City That Tells Its Stories, centers on two practical Richmond problems that are strong enough for hackathon use but still have serious continuity and information gaps: helping residents discover and engage with Richmond's arts and cultural events without manual curation, and helping the City gather and learn from residents' lived experiences so that community stories inform decisions and preserve neighborhood history before it is lost.
+
+Likely users
+Richmond residents new to the city or not plugged into arts networks; longtime residents (especially elderly and from underrepresented communities) with irreplaceable neighborhood knowledge; arts organizations and galleries wanting broader visibility without additional administrative burden; City communications staff; historians and oral history practitioners; planning and programming staff who need community input beyond surveys and public comment.
+
+Likely civic opportunity areas
+Arts event aggregation from public sources (Eventbrite, RSS, iCal); neighborhood discovery feeds filtered by geography and event type; geographic arts and cultural district maps; resident story collection portals with guided prompts and consent-first design; story-to-insight dashboards for staff; neighborhood history explorers connecting place to memory; tools that complement (not replace) museum and archive oral history work.
+
+Major constraints
+Event aggregation must use public sources only (no Facebook Events API — severely restricted post-2018). Story collection requires explicit consent mechanisms and clear use commitments. Both targeted statements lack a continuation champion (quick-kill flag). Manual curation dependency will cause tools to decay without sustained staff capacity. Claiming to represent "all" Richmond voices is a civic harm risk. Oral history and archive work at The Valentine, Black History Museum, and VCU libraries cannot be replaced by a weekend prototype.
+
+Likely categories of viable hackathon solutions
+Weekend-buildable prototypes such as arts event aggregators (Eventbrite API + RSS feeds), neighborhood event discovery feeds, story collection portals with voice/text input and consent flows, story theme dashboards with seeded data, neighborhood history map tools seeded from public oral history collections. Less viable: comprehensive manually-curated event calendars, tools claiming to represent all community voices without bias acknowledgment, anything requiring official City endorsement of story content, tools that replace institutional oral history work.

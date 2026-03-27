@@ -1,0 +1,12 @@
+Problem Landscape A5 — Richmond's Neighborhood Change and Storytelling Urgency
+
+Investigate the scope and pace of neighborhood change in Richmond, Virginia and why it makes the story collection problem time-sensitive. Which Richmond neighborhoods are experiencing the most rapid demographic and physical change? What kinds of community knowledge and neighborhood memory are at risk of being lost?
+
+Focus on: gentrification patterns, displacement of longtime residents, loss of community gathering places, and the specific neighborhoods most affected. Connect this to why a civic story collection tool is time-sensitive rather than optional.
+
+Output
+- Facts about Richmond neighborhood change (with source titles)
+- Which neighborhoods are most affected and why they matter for this pillar
+- What specific types of knowledge are at risk (businesses, institutions, social networks, historical events)
+- Inferences about the window for capture (how urgent is "urgent"?)
+- Connections to the oral history work being done or not done in Richmond institutions

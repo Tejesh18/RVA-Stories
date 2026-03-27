@@ -1,0 +1,15 @@
+Problem Landscape A4 — Cultural Equity: Whose Stories Get Told
+
+Investigate the dominant narrative problem in civic storytelling and cultural visibility tools. In Richmond, Virginia specifically, whose stories and cultural events are most visible, and whose are systematically less visible?
+
+Consider:
+- Which Richmond neighborhoods and communities are underrepresented in mainstream arts discovery channels
+- Which resident populations are most likely to have their stories excluded from digital story collection tools
+- Historical patterns of erasure in Richmond's civic and cultural narrative (Jackson Ward, Fulton, Church Hill, etc.)
+- What design choices in past civic tech tools have amplified dominant narratives
+
+Output
+- Richmond-specific analysis of cultural visibility gaps (labeled as Verified, Inference, or Unknown)
+- Design principles that make story collection and arts discovery tools more equitable
+- Specific features that would help this pillar serve underrepresented communities
+- Risks of a hackathon tool inadvertently making equity gaps worse

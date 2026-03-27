@@ -1,0 +1,15 @@
+Data D5 — Richmond GIS Data for Arts and Cultural Districts
+
+Investigate what geographic data exists in the Richmond GeoHub and other public GIS sources that is relevant to arts and cultural district mapping. Specifically:
+
+- Does Richmond GeoHub (rvagis.richmond.gov) have a layer for arts and cultural districts or designated arts zones?
+- What neighborhood boundary data exists in GeoHub and is it downloadable as GeoJSON or Shapefile?
+- What other relevant geographic layers exist: historic districts, parks/cultural facilities, business improvement districts?
+- Are Richmond's formally designated arts districts (if any) documented in GeoHub or another official source?
+- How current and maintained is the geographic data in GeoHub?
+
+Output
+- Confirmed GIS layers available from Richmond GeoHub relevant to this pillar
+- Data formats available and download access
+- Recommendation: should a map-based arts tool use arts district boundaries (if they exist) or neighborhood boundaries (more reliable)?
+- Fallback strategy if arts district data is not confirmed in GeoHub

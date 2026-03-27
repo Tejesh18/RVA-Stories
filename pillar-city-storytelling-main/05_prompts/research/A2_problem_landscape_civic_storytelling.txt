@@ -1,0 +1,12 @@
+Problem Landscape A2 — Civic Storytelling Reality
+
+Investigate why resident stories in Richmond are not currently captured or connected to City decisions. Using verifiable public information and clearly labeled inferences, explain: what civic engagement tools Richmond currently uses (surveys, 311, public comment), what they do and do not capture, and why lived experience narratives from longtime residents fall outside these systems.
+
+Focus on Richmond, Virginia. Include what is known about neighborhood change dynamics in Richmond and why this makes story capture time-sensitive.
+
+Output
+- Facts (with source titles) about current Richmond civic engagement mechanisms
+- Inferences (clearly labeled) about what those mechanisms miss
+- Unknowns about the gap between story and governance in Richmond
+- Assessment of why the "collection without use is archiving" risk is real here
+- What Richmond-specific urgency exists (neighborhood change, aging residents, etc.)

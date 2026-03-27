@@ -1,0 +1,23 @@
+Top 10 Hypotheses to Test — A City That Tells Its Stories
+
+These hypotheses should be tested with evidence during the research phase. Label each as Confirmed, Refuted, or Unresolved after running research prompts.
+
+H1: Most Richmond arts organizations maintain publicly accessible calendar pages, but fewer than half have machine-readable RSS or iCal feeds.
+
+H2: Eventbrite covers ticketed arts events at mid-size and larger venues in Richmond but largely misses gallery openings, pop-up events, and community arts gatherings.
+
+H3: Facebook Events is the primary discovery channel for small Richmond arts organizations and independent artists, but the Facebook Graph API is effectively inaccessible for third-party aggregation without extensive prior app review.
+
+H4: dorichmond.com exists as a general Richmond events aggregator but underserves arts-specific users who want gallery openings, smaller performances, and neighborhood arts events.
+
+H5: The Valentine, Black History Museum, and VCU Libraries collectively hold substantial Richmond oral history materials, but little of this content is digitally accessible to the public in a searchable, linkable format.
+
+H6: Older Richmond residents (65+) and longtime community members in rapidly changing neighborhoods (Church Hill, Fulton, parts of the Northside) have significant knowledge of neighborhood history that is not captured in any formal archive.
+
+H7: Voice-first or phone-based story collection would reach a significantly different and more valuable demographic for this pillar than web-form-only submission tools.
+
+H8: A story collection tool without a clearly communicated use pathway (how stories will inform City decisions) will fail to attract meaningful participation from skeptical residents who have seen similar initiatives produce no visible results.
+
+H9: A weekend-built arts event aggregator covering Eventbrite + 4-6 RSS/iCal sources would represent a meaningfully better discovery experience than currently exists for Richmond residents, even if it misses 40-50% of total events.
+
+H10: The highest-impact continuation path for this pillar runs through The Valentine and/or the Office of Strategic Communications — both have the institutional interest and capacity to own a story collection or arts discovery tool post-hackathon.

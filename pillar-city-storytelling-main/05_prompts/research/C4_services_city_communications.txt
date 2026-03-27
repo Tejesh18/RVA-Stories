@@ -1,0 +1,18 @@
+Services C4 — City of Richmond Communications Infrastructure
+
+Investigate how the City of Richmond currently communicates about arts, culture, and community engagement. Include:
+
+- Office of Strategic Communications: what it does, how it distributes arts and cultural information
+- City of Richmond website (rva.gov): what arts and culture sections exist and what they contain
+- Richmond's current civic engagement tools: participatory budgeting platforms, resident feedback portals, 311
+- How the City currently promotes arts events vs. how it could
+- City departments with relevant interest: Parks and Recreation (manages some cultural facilities), Planning (neighborhood engagement), Communications
+
+Also investigate Chaya Braxton (Office of Strategic Communications) as a named potential champion for this pillar.
+
+Output
+- Inventory of City communications channels relevant to arts and culture
+- Assessment of current gaps in City-facilitated arts discovery
+- Assessment of current gaps in City-facilitated civic storytelling
+- What the Office of Strategic Communications would need to formally adopt a hackathon prototype
+- Recommendation on which City channel is the most natural home for an arts aggregator or story portal

@@ -1,0 +1,33 @@
+Master Research Prompt
+
+You are conducting a Richmond-specific civic research sprint for the Richmond Civic Hackathon, March 27 to 29, 2026. Your goal is not to solve Pillar 7, A City That Tells Its Stories, directly, but to produce an evidence-based research brief that helps hackathon teams choose realistic, high-value, weekend-buildable software opportunities.
+
+Anchor context
+1) Targeted problem: Improving how residents discover and engage with Richmond's local arts and cultural events using technology, so that locally produced creative work is easier to find, support, and experience, while minimizing manual curation and acknowledging City technology, staffing, and budget constraints.
+2) Targeted problem: Improving how Richmond gathers and learns from residents' lived experiences so that community stories help inform City decisions, preserve Richmond's social history, and amplify voices that are often underrepresented, while respecting privacy, trust, and limited staff capacity.
+
+Requirements
+- Stay Richmond-specific.
+- Distinguish verified facts from inference and unknowns.
+- Identify which user problems are real, urgent, and software-addressable.
+- Map the public-facing landscape users must navigate today for arts discovery and story sharing.
+- Document relevant APIs, RSS feeds, calendars, directories, archives, and community organizations.
+- Identify where structured data exists versus where it lives in informal networks or staff knowledge.
+- Surface existing programs, institutions, and likely continuation partners.
+- Benchmark comparable tools from other cities and civic ecosystems (Do Richmond, Historypin, StoryCorps, etc.).
+- Evaluate what can plausibly be prototyped in 48 hours by a mixed team of technologists and community participants.
+- Identify what should not be built because it requires ongoing manual curation, institutional ownership, consent infrastructure that cannot be established in a weekend, or overclaims what a volunteer-built tool can accomplish.
+
+Deliverable format (Structured brief)
+- Richmond problem landscape summary for both targeted statements
+- User groups and stakeholder map
+- Current-state journey maps for both targeted statements
+- Source inventory with APIs, RSS feeds, URLs, data formats, owners, and likely use cases
+- Prior art and benchmark scan (including dorichmond.com as existing local tool)
+- Opportunity areas sorted by hackathon feasibility
+- Risks, ethics, consent concerns, representational bias risks, and implementation barriers
+- Clear recommendations for 3–5 weekend-buildable project directions
+- Explicit unknowns to validate with City staff, nonprofit partners, or arts community members
+
+Constraint
+Do not write generic civic innovation advice. Focus on operational reality, public data quality, user confusion points, system constraints, and prototype feasibility for Richmond specifically.

@@ -1,0 +1,18 @@
+Services C2 — Existing Event Aggregators in Richmond
+
+What event discovery tools and aggregators currently exist in Richmond, Virginia? Investigate:
+
+- dorichmond.com: what it covers, how current its data is, whether it has an arts-specific focus, gaps in its coverage
+- Style Weekly events section: scope, structure, digital accessibility
+- RVA Magazine events: scope and structure
+- Richmond.com events: scope and structure
+- Eventbrite's Richmond-area event feed: coverage quality for arts events
+- Any other local event aggregators currently operating
+
+For each, assess: coverage quality for arts-specific events, freshness, geographic filtering, accessibility for new residents, and whether it solves the problem described in the targeted statement.
+
+Output
+- Inventory of existing aggregators with coverage assessment
+- What each tool does well and where it falls short for arts discovery
+- Gap analysis: what a new tool would need to do differently to justify building it
+- Recommendation on whether a new arts-specific aggregator is warranted given what already exists

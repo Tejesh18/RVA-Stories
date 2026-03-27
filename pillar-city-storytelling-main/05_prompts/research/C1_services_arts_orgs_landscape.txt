@@ -1,0 +1,16 @@
+Services C1 — Richmond Arts Organizations Landscape
+
+Map the landscape of arts organizations, galleries, venues, and cultural institutions in Richmond, Virginia. Focus on:
+
+- Major institutions (VMFA, ICA at VCU, Richmond Symphony, Richmond Ballet, Firehouse Theatre, etc.)
+- Mid-size organizations (1708 Gallery, Visual Arts Center, Virginia Rep, etc.)
+- Community and neighborhood arts spaces
+- Arts organizations serving underrepresented communities (African American, Latino, LGBTQ+ communities)
+- How each category typically promotes events (social media, email lists, Eventbrite, their own websites, RSS/iCal feeds)
+
+Output
+- Categorized inventory of Richmond arts organizations by type and size
+- How they currently publish event information (channels and formats)
+- Which have likely structured calendar data (RSS, iCal, Eventbrite) vs. which are informal
+- Which organizations serve underrepresented communities and may be harder to aggregate
+- Gaps in what an aggregator would cover vs. not cover

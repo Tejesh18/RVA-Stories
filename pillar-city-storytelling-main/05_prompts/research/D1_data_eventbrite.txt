@@ -1,0 +1,18 @@
+Data D1 — Eventbrite API: Scope and Access for Richmond Arts Events
+
+Investigate the Eventbrite public API for use in a Richmond arts event aggregator. Specifically:
+
+- What endpoints are available for searching public events by location?
+- What is the current API authentication requirement (API key, OAuth, public access)?
+- What event categories are available and which map to arts and culture?
+- What fields are returned per event (title, date, time, venue, description, category, URL, ticket price)?
+- What are the rate limits on the free tier?
+- How comprehensive is Eventbrite coverage for Richmond arts events — which types of events and venues are typically listed there?
+- What types of Richmond arts events are NOT typically listed on Eventbrite?
+
+Output
+- API access summary (authentication, endpoints, rate limits)
+- Schema for event objects returned
+- Coverage assessment for Richmond arts events
+- Specific gaps in Eventbrite coverage for this use case
+- Recommendation: should Eventbrite be the primary data source, one of several, or only supplementary?

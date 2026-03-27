@@ -1,0 +1,35 @@
+Red Flags — A City That Tells Its Stories
+
+These are the most likely failure modes and civic harm risks for projects in this pillar. Treat each as a stopping condition unless explicitly mitigated.
+
+RED FLAG 1 — Dominant Narrative Capture
+Building a story collection tool or arts aggregator that, by design, only captures voices already comfortable with civic digital participation. Middle-class, digitally fluent, English-speaking residents are not the target population for this pillar's civic storytelling problem. If your user testing shows your tool is "working" primarily for this demographic, your tool has failed the pillar's core equity goal.
+Mitigation: Voice input as first-class feature. Spanish language option. No login required. Explicit outreach design to older residents and non-digital users. Acknowledge the participation gap prominently.
+
+RED FLAG 2 — Tech Access Barriers for Storytellers
+Requiring a smartphone, broadband internet, or a modern browser for story submission effectively excludes the most valuable contributors (elderly residents, residents facing gentrification) from participating.
+Mitigation: Phone-friendly design. Voice recording as primary input option. Minimal steps to submission. Test on older Android devices and slow connections.
+
+RED FLAG 3 — Claiming to Represent "All" Richmond Voices
+Any dashboard, summary, or visualization that presents story submissions as representative of "what Richmond thinks" without a prominent disclaimer is a civic harm. Self-selected submissions are not a sample.
+Mitigation: Required disclaimer on any aggregate view: "Based on stories voluntarily shared — not a representative sample of Richmond residents."
+
+RED FLAG 4 — Collection Without Use Commitment
+Building a story collection portal without a credible answer to "and then what?" Residents who submit stories and see no visible outcome will not submit more, and will feel the City engaged in performative listening.
+Mitigation: Be explicit in your demo about the intended use pathway. Even if the hackathon version only demonstrates collection, your pitch must address what happens next.
+
+RED FLAG 5 — Manual Curation Dependency
+Building an arts event aggregator that requires human staff to review, add, or maintain listings. Without a funded, sustained staff role, the tool will decay within weeks of launch.
+Mitigation: Automate everything possible. Use APIs and RSS feeds that self-update. If any manual curation is required, document the staff time explicitly and propose who funds it.
+
+RED FLAG 6 — Facebook Events Dependency
+Planning a Richmond arts aggregator that depends on Facebook Events data. The Graph API is severely restricted and public event data is not accessible to third parties without extensive prior app review.
+Mitigation: Exclude Facebook from your data architecture. Note it as a gap in your demo. Focus on Eventbrite API, RSS/iCal feeds, and direct website scraping of confirmed sources.
+
+RED FLAG 7 — Replacing Museum and Archive Work
+Building a tool that positions itself as a replacement for The Valentine, Black History Museum, or VCU Libraries' oral history programs. These institutions have trained professionals, established consent practices, and long-term preservation commitments.
+Mitigation: Position as complementary. Use museum collections as seed content if accessible. Propose formal partnership in your continuation plan.
+
+RED FLAG 8 — No Consent Mechanism
+Launching any story collection feature without an explicit, readable consent flow. This is both an ethical failure and a legal risk.
+Mitigation: Required consent screen before any submission. Plain language. Named data steward. Clear statement of intended use.

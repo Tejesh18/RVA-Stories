@@ -1,0 +1,17 @@
+Opportunity Spaces F5 — What Not to Build
+
+Define clearly what should NOT be built for this pillar and why. For each item, explain the specific reason it is out of scope for a weekend hackathon.
+
+Do not build:
+1. A comprehensive manually-curated Richmond arts calendar (explain why this will decay and who would have to maintain it)
+2. A Facebook Events aggregator (explain the API restriction and why it cannot be resolved in 48 hours)
+3. A tool claiming to collect or represent "all" Richmond resident stories without bias acknowledgment (explain the civic harm)
+4. A replacement for The Valentine's or Black History Museum's oral history programs (explain the institutional and ethical requirements they involve)
+5. A sentiment analysis or policy recommendation engine derived from story submissions (explain the overclaiming risk)
+6. A tool requiring official City endorsement or authentication of story content (explain the approval process requirements)
+7. Any story collection tool without an explicit consent mechanism (explain why this is non-negotiable)
+
+Output
+- Clear explanation of why each item is out of scope
+- What a team should do instead if they are drawn to each out-of-scope direction
+- Red flag language: specific phrases or features in a pitch that signal a team has drifted into out-of-scope territory

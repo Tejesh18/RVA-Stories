@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>What's On RVA - MVP</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+  </head>
+  <body>
+    <header class="header">
+      <h1>What's On RVA</h1>
+      <p>Discover Richmond arts and culture events from source-linked listings.</p>
+    </header>
+
+    <main class="container">
+      <section id="dataStatus" class="data-status" aria-live="polite"></section>
+
+      <section class="action-row">
+        <button id="tonightBtn" type="button">Tonight Near Me</button>
+        <button id="resetBtn" type="button" class="secondary">Reset Filters</button>
+      </section>
+
+      <section class="controls">
+        <label>
+          Neighborhood
+          <select id="neighborhoodFilter">
+            <option value="all">All</option>
+          </select>
+        </label>
+
+        <label>
+          Category
+          <select id="categoryFilter">
+            <option value="all">All</option>
+          </select>
+        </label>
+
+        <label>
+          Cost
+          <select id="costFilter">
+            <option value="all">All</option>
+            <option value="free">Free</option>
+            <option value="paid">Paid</option>
+          </select>
+        </label>
+
+        <label>
+          Date
+          <select id="dateFilter">
+            <option value="all">All upcoming</option>
+            <option value="weekend">This weekend</option>
+            <option value="7days">Next 7 days</option>
+          </select>
+        </label>
+      </section>
+
+      <section id="personalizedMessage" class="personalized-message"></section>
+
+      <section class="map-panel">
+        <h2>Neighborhood Arts Map</h2>
+        <div id="map"></div>
+      </section>
+
+      <section id="resultsMeta" class="results-meta"></section>
+      <section id="eventsList" class="events-list"></section>
+
+      <section class="data-panel">
+        <h2>Data Transparency</h2>
+        <p id="pilotScope">
+          <strong>Pilot scope:</strong> CultureWorks API plus planned additional feeds; not comprehensive.
+        </p>
+        <p><strong>Last updated:</strong> <span id="lastUpdated">-</span></p>
+        <ul id="sourcesList"></ul>
+        <p class="note">
+          This prototype aggregates and links to original listings. It does not replace source calendars.
+        </p>
+      </section>
+    </main>
+
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+Users B2 — The Local Artist or Small Venue
+
+Build a detailed persona for a Richmond artist or small arts venue that wants greater visibility for their events without additional administrative burden. Include:
+
+- Type of organization (solo artist, gallery, small theater, community arts space, etc.)
+- Current promotion practices: which platforms they use, how much time they spend, what they get in return
+- Pain points: reaching new audiences, maintaining multiple calendars, missing discoverability
+- What they would accept vs. what they would resist from an aggregation tool (consent, attribution, control)
+- Technology capacity: do they have staff who can maintain a website calendar? A reliable RSS feed?
+
+Base on evidence from Richmond, Virginia and comparable small arts communities. Label inferences clearly.
+
+Output
+- Persona profile with current promotion behaviors and pain points
+- What this persona gains and risks from an aggregator that pulls their event data
+- What attribution and consent requirements they would likely demand
+- Feature requirements for a tool to work for this user without adding burden

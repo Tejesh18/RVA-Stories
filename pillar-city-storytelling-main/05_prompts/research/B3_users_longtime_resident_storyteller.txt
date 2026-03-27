@@ -1,0 +1,18 @@
+Users B3 — The Longtime Resident with Neighborhood Stories
+
+Build a detailed persona for a longtime Richmond resident who holds valuable neighborhood history and lived experience but currently has no trusted, low-barrier channel to share it. The core example from the rubric is a 75-year-old African American woman from Church Hill who has watched her neighborhood change dramatically over six decades. Include:
+
+- Demographic context and relationship to neighborhood
+- Specific knowledge and stories she holds (types of memory: businesses, gatherings, social networks, institutions)
+- Current barriers to sharing: technology access, institutional gatekeeping, uncertainty about whether her stories matter
+- Preferred channels for communication: voice, phone, in-person, written
+- Language considerations: English, Spanish, other languages present in Richmond communities
+- Trust factors: what would make her trust that her stories will be handled respectfully
+
+Base on evidence from comparable populations in Richmond and similar cities. Label inferences clearly.
+
+Output
+- Detailed persona with barriers, preferences, and motivations
+- Specific design requirements for a tool to reach this user
+- What makes this user the priority target (equity, urgency, irreplaceability of knowledge)
+- What features would fail this user and why

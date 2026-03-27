@@ -1,0 +1,18 @@
+Opportunity Spaces F4 — Where Software Helps and Where It Does Not
+
+Analyze where technology genuinely helps in this pillar vs. where the problem requires human relationships, institutional commitment, or community trust that software cannot provide.
+
+For each opportunity space, distinguish:
+- What software can do (aggregation, discovery, guided collection, theme surfacing, geographic display)
+- What software cannot do (building trust with skeptical residents, ensuring stories are acted on, maintaining institutional commitment to using stories, replacing trained oral historians and archivists)
+
+Specifically address:
+- What is the right role for AI/LLM in this pillar (theme extraction, prompt generation, translation) vs. where AI overclaims
+- What must be human-led for the tool to be trustworthy and effective
+- Where a weekend prototype is genuinely valuable vs. where it overpromises
+
+Output
+- Clear delineation of software roles vs. human roles for each opportunity
+- Specific AI use cases that are appropriate and bounded
+- Specific AI use cases that are inappropriate or overclaiming for this pillar
+- Recommendation for how to frame the tool's role honestly in the demo

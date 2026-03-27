@@ -1,0 +1,16 @@
+Users B5 — Digital Equity: Residents Who Use Voice, Phone, or Non-Web Channels
+
+Investigate what is known about digital access and technology comfort levels in Richmond, Virginia, with particular attention to populations relevant to this pillar: elderly residents, residents in rapidly changing neighborhoods, residents with limited English proficiency, and low-income residents.
+
+Include:
+- Richmond-specific data on broadband access and smartphone ownership by demographic
+- What is known about technology comfort levels for older Richmond residents
+- What Richmond civic engagement tools currently exist for non-digital users
+- What voice-based or phone-based civic engagement approaches have worked elsewhere
+- Design patterns that make civic tech tools accessible to low-digital users
+
+Output
+- Richmond-specific evidence on digital equity (labeled Verified, Inference, Unknown)
+- Specific accessibility requirements implied by the target population for this pillar
+- Voice and phone design patterns that should be incorporated
+- What a "digital equity" version of an arts discovery or story collection tool looks like

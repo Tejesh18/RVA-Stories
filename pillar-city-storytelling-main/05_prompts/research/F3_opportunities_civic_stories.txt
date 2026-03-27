@@ -1,0 +1,17 @@
+Opportunity Spaces F3 — Civic Storytelling Deep Dive
+
+For the civic storytelling opportunity specifically, map out what a successful hackathon prototype would look like in detail. Address:
+
+- What is the minimum viable story collection tool: what features are required for a compelling demo?
+- What guided prompts would resonate most with Richmond residents, particularly longtime community members?
+- What does the consent flow look like in plain language for a non-technical user?
+- How does voice input work in the browser, and what are the technical requirements?
+- What happens after a story is submitted — how is the "use pathway" communicated to the user?
+- What seeded stories would make the demo most credible if live submissions are sparse?
+
+Output
+- Minimum viable feature set for a credible story collection demo
+- 5 suggested guided prompts tailored to Richmond neighborhoods and history
+- Consent language template in plain English (and ideally Spanish)
+- Voice recording implementation notes (browser API, fallback options)
+- Demo strategy if real submissions have not been received

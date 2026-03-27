@@ -1,0 +1,19 @@
+Users B4 — Full Stakeholder Map
+
+Map all stakeholders for both targeted problem statements in Pillar 7. For each stakeholder, identify their role, interest, power, and what they gain or lose from a successful hackathon prototype.
+
+Stakeholder categories to cover:
+- Primary users (arts-curious residents, longtime resident storytellers)
+- Secondary beneficiaries (artists, venues, arts organizations)
+- Institutional partners (The Valentine, Black History Museum, VCU Libraries, Office of Strategic Communications)
+- Named potential champions (Todd Waldo — Shockoe Institute; Meg Hughes — The Valentine; Sylvio Lynch III — History & Culture Commission; Chaya Braxton — Office of Strategic Communications)
+- City departments with relevant interest (Parks & Recreation, Communications, Planning)
+- Community organizations doing adjacent work (neighborhood associations, documentary groups)
+
+Base on public information about Richmond, Virginia. Label inferences clearly.
+
+Output
+- Stakeholder table with role, interest, power, and position toward hackathon prototypes
+- Priority stakeholders for post-hackathon continuation conversations
+- Stakeholders who could derail a project if not considered
+- Connections to identify for the hackathon weekend

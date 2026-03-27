@@ -1,0 +1,20 @@
+Services C3 — Oral History and Story Institutions in Richmond
+
+Map the institutions in Richmond, Virginia that do oral history and community story work. For each, describe what they collect, how they store it, who can access it, and whether any digital content is publicly accessible.
+
+Institutions to research:
+- The Valentine (Richmond History Center): scope of oral history collections, digital accessibility, programs
+- Black History Museum and Cultural Center of Virginia: collections, digitization status, public access
+- Virginia Museum of History and Culture: Richmond-focused collections, oral history programs
+- VCU Libraries: special collections and digital collections related to Richmond neighborhoods and history
+- Library of Virginia: relevant Richmond oral history holdings
+
+Also research:
+- StoryCorps: whether Richmond has been covered, how to access Richmond recordings from the archive
+- Any neighborhood history projects, community oral history initiatives, or local documentary groups working in Richmond
+
+Output
+- Institution-by-institution summary with collection scope and digital access status
+- What content is publicly accessible today vs. requires institutional access
+- Which institutions are most natural partners for a neighborhood history tool or story collection portal
+- Gaps: what kinds of Richmond stories are not collected by any of these institutions

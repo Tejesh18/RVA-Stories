@@ -1,0 +1,15 @@
+Data D3 — RSS and iCal Feeds from Richmond Arts Organizations
+
+Investigate what RSS, Atom, and iCal (ICS) feeds exist from Richmond, Virginia arts organizations and local media for event data. Specifically:
+
+- Which major Richmond arts organizations (VMFA, ICA at VCU, Richmond Symphony, Firehouse Theatre, 1708 Gallery, etc.) publish RSS or iCal feeds from their events calendars?
+- Does Style Weekly maintain an RSS feed for event listings?
+- Does RVA Magazine maintain structured event feeds?
+- What is the typical quality and completeness of Richmond arts organization RSS feeds (do they include venue, date, time, and description fields)?
+- What tools or libraries are most effective for parsing RSS and iCal data in a hackathon context?
+
+Output
+- Inventory of confirmed or likely RSS/iCal sources from Richmond arts organizations
+- Assessment of feed quality and completeness
+- Recommended parsing libraries for Python and JavaScript
+- Strategy for handling organizations without structured feeds (HTML scraping vs. manual entry vs. omission)

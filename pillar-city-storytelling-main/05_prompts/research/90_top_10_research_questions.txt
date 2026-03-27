@@ -1,0 +1,23 @@
+Top 10 Research Questions — A City That Tells Its Stories
+
+These are the most important open questions for hackathon teams working in this pillar. Answer them before committing to a project direction.
+
+1. What arts and cultural event data is actually accessible via public API or structured feed in Richmond today? Which organizations publish Eventbrite listings? Which maintain RSS or iCal calendar feeds?
+
+2. What does dorichmond.com currently cover, and what arts events does it miss? Where are the gaps that a more arts-focused tool could address?
+
+3. How do Richmond residents currently discover arts and cultural events? What channels do they rely on, and where do they fail?
+
+4. What is the current state of Facebook Events API access for third-party applications? Is any structured event data accessible without significant prior app review?
+
+5. What oral history and neighborhood story collections exist at The Valentine, Black History Museum, VCU Libraries, and Virginia Museum of History and Culture? What is publicly accessible digitally?
+
+6. What community organizations in Richmond are already doing story-based civic work — StoryCorps affiliates, local documentary groups, neighborhood history projects?
+
+7. What are the most comfortable storytelling channels for older residents, non-digital users, and residents with limited English proficiency in Richmond? What has worked in comparable cities?
+
+8. What consent and privacy frameworks are appropriate for a city-connected story collection tool? What do similar tools (StoryCorps, Historypin) use?
+
+9. Who are the named potential champions for this pillar (Todd Waldo, Meg Hughes, Sylvio Lynch III, Chaya Braxton) and what institutional capacities do they represent for post-hackathon continuation?
+
+10. What is the most time-sensitive civic opportunity in this pillar — arts aggregation (ongoing need) or story collection (urgent due to neighborhood change and aging residents)?
