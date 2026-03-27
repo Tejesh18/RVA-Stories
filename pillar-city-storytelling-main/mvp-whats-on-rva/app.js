@@ -28,6 +28,13 @@ const seedEvents = [
     venue: "Broad Street Arts Corridor",
     category: "Visual Art",
     cost: "free",
+    budgetTier: "free",
+    priceMax: 0,
+    numAttending: 8,
+    sponsored: false,
+    familyFriendly: true,
+    wheelchairAccessible: true,
+    firstTimeFriendly: true,
     lat: 37.5486,
     lng: -77.4456,
     sourceName: "Bundled demo (offline fallback)",
@@ -41,6 +48,13 @@ const seedEvents = [
     venue: "Historic Theater RVA",
     category: "Music",
     cost: "paid",
+    budgetTier: "paid",
+    priceMax: 25,
+    numAttending: 120,
+    sponsored: false,
+    familyFriendly: false,
+    wheelchairAccessible: true,
+    firstTimeFriendly: false,
     lat: 37.5512,
     lng: -77.436,
     sourceName: "Bundled demo (offline fallback)",
@@ -54,6 +68,13 @@ const seedEvents = [
     venue: "Workshop RVA",
     category: "Tour",
     cost: "paid",
+    budgetTier: "under10",
+    priceMax: 8,
+    numAttending: 4,
+    sponsored: false,
+    familyFriendly: true,
+    wheelchairAccessible: false,
+    firstTimeFriendly: true,
     lat: 37.5658,
     lng: -77.4673,
     sourceName: "Bundled demo (offline fallback)",
@@ -67,6 +88,13 @@ const seedEvents = [
     venue: "Neighborhood Arts Space",
     category: "Literary",
     cost: "free",
+    budgetTier: "free",
+    priceMax: 0,
+    numAttending: 3,
+    sponsored: false,
+    familyFriendly: true,
+    wheelchairAccessible: true,
+    firstTimeFriendly: true,
     lat: 37.5359,
     lng: -77.4098,
     sourceName: "Bundled demo (offline fallback)",
@@ -80,6 +108,13 @@ const seedEvents = [
     venue: "Cultural Center Annex",
     category: "Workshop",
     cost: "paid",
+    budgetTier: "paid",
+    priceMax: 35,
+    numAttending: 15,
+    sponsored: true,
+    familyFriendly: true,
+    wheelchairAccessible: true,
+    firstTimeFriendly: true,
     lat: 37.5,
     lng: -77.49,
     sourceName: "Bundled demo (offline fallback)",
@@ -100,7 +135,8 @@ const regionCentroids = {
   Chesterfield: { lat: 37.4, lng: -77.55 },
   Henrico: { lat: 37.65, lng: -77.45 },
   Petersburg: { lat: 37.233, lng: -77.405 },
-  "Richmond Area": { lat: 37.5407, lng: -77.436 }
+  "Richmond Area": { lat: 37.5407, lng: -77.436 },
+  VCU: { lat: 37.5495, lng: -77.451 }
 };
 
 let events = [];
@@ -110,7 +146,10 @@ const filters = {
   neighborhood: "all",
   category: "all",
   cost: "all",
-  date: "all"
+  date: "all",
+  eqFamily: false,
+  eqWheelchair: false,
+  eqFirstTime: false
 };
 
 const neighborhoodFilter = document.getElementById("neighborhoodFilter");
@@ -124,8 +163,18 @@ const lastUpdated = document.getElementById("lastUpdated");
 const dataStatus = document.getElementById("dataStatus");
 const pilotScope = document.getElementById("pilotScope");
 const tonightBtn = document.getElementById("tonightBtn");
+const tonightRvaBtn = document.getElementById("tonightRvaBtn");
+const surpriseBtn = document.getElementById("surpriseBtn");
 const resetBtn = document.getElementById("resetBtn");
 const personalizedMessage = document.getElementById("personalizedMessage");
+const chatInput = document.getElementById("chatInput");
+const chatSearchBtn = document.getElementById("chatSearchBtn");
+const chatHint = document.getElementById("chatHint");
+const hiddenGemsList = document.getElementById("hiddenGemsList");
+const surpriseBanner = document.getElementById("surpriseBanner");
+const eqFamily = document.getElementById("eqFamily");
+const eqWheelchair = document.getElementById("eqWheelchair");
+const eqFirstTime = document.getElementById("eqFirstTime");
 
 let map;
 let markersLayer;
@@ -140,6 +189,40 @@ function hashString(str) {
 
 function toDate(value) {
   return new Date(value);
+}
+
+function extractPriceMaxFromLocalist(e) {
+  if (e.free) {
+    return 0;
+  }
+  const tc = e.ticket_cost;
+  if (tc == null || String(tc).trim() === "") {
+    return null;
+  }
+  const s = String(tc);
+  if (/free/i.test(s)) {
+    return 0;
+  }
+  const nums = [];
+  const re = /\$?\s*(\d+(?:\.\d+)?)/g;
+  let m;
+  while ((m = re.exec(s)) !== null) {
+    nums.push(parseFloat(m[1]));
+  }
+  if (nums.length === 0) {
+    return null;
+  }
+  return Math.min(...nums);
+}
+
+function computeBudgetTier(e, priceMax) {
+  if (e.free || priceMax === 0) {
+    return "free";
+  }
+  if (priceMax != null && priceMax <= 10) {
+    return "under10";
+  }
+  return "paid";
 }
 
 function isThisWeekend(date, now) {
@@ -160,6 +243,11 @@ function isWithin7Days(date, now) {
   const in7 = new Date(now);
   in7.setDate(now.getDate() + 7);
   return date >= now && date <= in7;
+}
+
+function isWithinNextHours(date, now, hours) {
+  const end = new Date(now.getTime() + hours * 3600000);
+  return date >= now && date <= end;
 }
 
 function formatDate(dateValue) {
@@ -201,6 +289,7 @@ function normalizeLocalistEntry(entry) {
   const regions = e.filters?.event_region?.map((r) => r.name) || [];
   const topics = e.filters?.event_topic?.map((t) => t.name) || [];
   const types = e.filters?.event_type?.map((t) => t.name) || [];
+  const audiences = e.filters?.event_target_audience?.map((a) => a.name) || [];
   const neighborhood = regions[0] || "Richmond Area";
   const category = topics[0] || types[0] || "Arts & Culture";
 
@@ -212,10 +301,21 @@ function normalizeLocalistEntry(entry) {
     lng = -77.436 + ((h >> 8) % 200) / 10000;
   }
 
-  const cost = e.free ? "free" : "paid";
+  const priceMax = extractPriceMaxFromLocalist(e);
+  const budgetTier = computeBudgetTier(e, priceMax);
+  const cost = budgetTier === "free" ? "free" : "paid";
+
+  const familyFriendly = audiences.some((a) => /family/i.test(a));
+  const wheelchairAccessible = audiences.some((a) => /wheelchair/i.test(a));
+  const firstTimeFriendly =
+    familyFriendly ||
+    audiences.some((a) => /all ages/i.test(a)) ||
+    /open\s*mic|gallery|exhibit|family/i.test(e.title || "");
+
   const sourceUrl =
     e.url && String(e.url).trim().length > 0 ? e.url : e.localist_url;
   const venue = e.location_name || e.address || "Venue TBD";
+  const numAttending = inst?.num_attending ?? -1;
 
   return {
     id: `cw-${e.id}`,
@@ -225,6 +325,13 @@ function normalizeLocalistEntry(entry) {
     venue,
     category,
     cost,
+    budgetTier,
+    priceMax,
+    numAttending,
+    sponsored: !!e.sponsored,
+    familyFriendly,
+    wheelchairAccessible,
+    firstTimeFriendly,
     lat,
     lng,
     sourceName: "CultureWorks Localist API",
@@ -292,6 +399,48 @@ function setDataStatus() {
   }
 }
 
+function matchesCostFilter(event) {
+  if (filters.cost === "all") {
+    return true;
+  }
+  if (filters.cost === "free") {
+    return event.budgetTier === "free";
+  }
+  if (filters.cost === "under10") {
+    return event.budgetTier === "free" || event.budgetTier === "under10";
+  }
+  if (filters.cost === "paid") {
+    return event.budgetTier === "paid";
+  }
+  return true;
+}
+
+function matchesDateFilter(date, now) {
+  if (filters.date === "weekend") {
+    return isThisWeekend(date, now);
+  }
+  if (filters.date === "7days") {
+    return isWithin7Days(date, now);
+  }
+  if (filters.date === "tonight6h") {
+    return isWithinNextHours(date, now, 6);
+  }
+  return date >= now;
+}
+
+function matchesEquityFilters(event) {
+  if (filters.eqFamily && !event.familyFriendly) {
+    return false;
+  }
+  if (filters.eqWheelchair && !event.wheelchairAccessible) {
+    return false;
+  }
+  if (filters.eqFirstTime && !event.firstTimeFriendly) {
+    return false;
+  }
+  return true;
+}
+
 function getFilteredEvents() {
   const now = new Date();
   return events.filter((event) => {
@@ -299,19 +448,56 @@ function getFilteredEvents() {
     const neighborhoodMatch =
       filters.neighborhood === "all" || event.neighborhood === filters.neighborhood;
     const categoryMatch = filters.category === "all" || event.category === filters.category;
-    const costMatch = filters.cost === "all" || event.cost === filters.cost;
-
-    let dateMatch = true;
-    if (filters.date === "weekend") {
-      dateMatch = isThisWeekend(date, now);
-    } else if (filters.date === "7days") {
-      dateMatch = isWithin7Days(date, now);
-    } else {
-      dateMatch = date >= now;
-    }
-
-    return neighborhoodMatch && categoryMatch && costMatch && dateMatch;
+    const costMatch = matchesCostFilter(event);
+    const dateMatch = matchesDateFilter(date, now);
+    const equityMatch = matchesEquityFilters(event);
+    return neighborhoodMatch && categoryMatch && costMatch && dateMatch && equityMatch;
   });
+}
+
+function getUpcomingEvents() {
+  const now = new Date();
+  return events.filter((e) => toDate(e.datetime) >= now);
+}
+
+function getHiddenGems(pool) {
+  return [...pool]
+    .filter((e) => !e.sponsored)
+    .sort((a, b) => {
+      const na = a.numAttending >= 0 ? a.numAttending : 50;
+      const nb = b.numAttending >= 0 ? b.numAttending : 50;
+      return na - nb;
+    })
+    .slice(0, 5);
+}
+
+function renderBadges(event) {
+  const badges = [];
+  if (event.firstTimeFriendly) {
+    badges.push('<span class="badge badge-first">First-time friendly</span>');
+  }
+  if (event.familyFriendly) {
+    badges.push('<span class="badge badge-family">Family friendly</span>');
+  }
+  if (event.wheelchairAccessible) {
+    badges.push('<span class="badge badge-a11y">Wheelchair accessible</span>');
+  }
+  if (event.budgetTier === "free" || event.budgetTier === "under10") {
+    badges.push('<span class="badge badge-budget">Budget-friendly</span>');
+  }
+  if (
+    event.numAttending >= 0 &&
+    event.numAttending < 15 &&
+    !event.sponsored
+  ) {
+    badges.push('<span class="badge badge-gem">Hidden gem</span>');
+  }
+  return badges.length ? `<p class="event-badges">${badges.join(" ")}</p>` : "";
+}
+
+function plainLanguageBlurb(event) {
+  const bits = [event.category, event.neighborhood].filter(Boolean);
+  return `${escapeHtml(event.title)} — ${bits.join(" · ")}. Source-linked listing; see original site for full details.`;
 }
 
 function renderMap(filteredEvents) {
@@ -367,47 +553,181 @@ function renderPersonalizedMessage(filteredEvents) {
   personalizedMessage.textContent = `Because you liked ${preferredCategory} in ${preferredNeighborhood}, here are ${matches.length} matching event(s).`;
 }
 
+function renderEventCard(event) {
+  const card = document.createElement("article");
+  card.className = "event-card";
+  card.dataset.eventId = event.id;
+  const priceLine =
+    event.priceMax != null && event.priceMax > 0
+      ? `Est. from listing: around $${event.priceMax}`
+      : event.budgetTier === "free"
+        ? "Free"
+        : "See listing for price";
+  card.innerHTML = `
+        <div class="event-top">
+          <h3 class="event-title">${escapeHtml(event.title)}</h3>
+          <span class="event-chip">${escapeHtml(event.budgetTier === "free" ? "free" : event.budgetTier === "under10" ? "≤$10" : "paid")}</span>
+        </div>
+        ${renderBadges(event)}
+        <p class="event-meta">
+          ${formatDate(event.datetime)} | ${escapeHtml(event.neighborhood)} | ${escapeHtml(
+            event.venue
+          )}
+        </p>
+        <p class="event-plain">${plainLanguageBlurb(event)}</p>
+        <p class="event-meta">${escapeHtml(priceLine)}</p>
+        <p class="event-links">
+          Source: ${escapeHtml(event.sourceName)} -
+          <a href="${event.sourceUrl}" target="_blank" rel="noreferrer">View original listing</a>
+        </p>
+      `;
+  return card;
+}
+
+function renderHiddenGems() {
+  const pool = getFilteredEvents();
+  const base = pool.length ? pool : getUpcomingEvents();
+  const gems = getHiddenGems(base);
+  hiddenGemsList.innerHTML = "";
+  if (gems.length === 0) {
+    hiddenGemsList.innerHTML =
+      "<p class=\"note\">No hidden gems match right now — try widening filters.</p>";
+    return;
+  }
+  gems.forEach((event) => {
+    hiddenGemsList.appendChild(renderEventCard(event));
+  });
+}
+
 function renderEvents() {
   const filtered = getFilteredEvents();
 
   resultsMeta.textContent = `${filtered.length} event(s) found`;
   eventsList.innerHTML = "";
+  surpriseBanner.innerHTML = "";
 
   if (filtered.length === 0) {
     eventsList.innerHTML = "<p>No events found for current filters.</p>";
     renderMap([]);
     renderPersonalizedMessage([]);
+    renderHiddenGems();
     return;
   }
 
   filtered
     .sort((a, b) => toDate(a.datetime) - toDate(b.datetime))
     .forEach((event) => {
-      const card = document.createElement("article");
-      card.className = "event-card";
-      card.innerHTML = `
-        <div class="event-top">
-          <h3 class="event-title">${escapeHtml(event.title)}</h3>
-          <span class="event-chip">${escapeHtml(event.cost)}</span>
-        </div>
-        <p class="event-meta">
-          ${formatDate(event.datetime)} | ${escapeHtml(event.neighborhood)} | ${escapeHtml(
-        event.venue
-      )}
-        </p>
-        <p class="event-meta">Category: ${escapeHtml(event.category)} | Summary: ${escapeHtml(
-        event.title
-      )} in ${escapeHtml(event.neighborhood)} (${escapeHtml(event.cost)} admission).</p>
-        <p class="event-links">
-          Source: ${escapeHtml(event.sourceName)} -
-          <a href="${event.sourceUrl}" target="_blank" rel="noreferrer">View original listing</a>
-        </p>
-      `;
-      eventsList.appendChild(card);
+      eventsList.appendChild(renderEventCard(event));
     });
 
   renderMap(filtered);
   renderPersonalizedMessage(filtered);
+  renderHiddenGems();
+}
+
+function applyChatQuery(raw) {
+  const q = raw.toLowerCase().trim();
+  if (!q) {
+    chatHint.textContent = "";
+    return;
+  }
+
+  chatHint.textContent = "";
+  filters.neighborhood = "all";
+  filters.category = "all";
+  filters.cost = "all";
+  filters.date = "all";
+  filters.eqFamily = false;
+  filters.eqWheelchair = false;
+  filters.eqFirstTime = false;
+
+  if (/\b(free|no cost)\b/.test(q)) {
+    filters.cost = "free";
+  }
+  if (/\b(under\s*\$?10|under\s*ten|cheap|budget|student)\b/.test(q)) {
+    filters.cost = "under10";
+  }
+  if (/\bweekend\b/.test(q)) {
+    filters.date = "weekend";
+  } else if (/\btonight\b/.test(q) || /\b(next\s*6|6\s*hour)\b/.test(q)) {
+    filters.date = "tonight6h";
+  }
+  let hint = "";
+  if (/\bfriday\b/.test(q)) {
+    hint =
+      "Tip: use “This weekend” and scan by date for Friday — day-of-week filter can be a stretch goal.";
+  }
+  if (/\bmusic|jazz|concert\b/.test(q)) {
+    const music = [...new Set(events.map((e) => e.category))].find((c) =>
+      /music|concert|perform/i.test(c)
+    );
+    if (music) {
+      filters.category = music;
+    }
+  }
+  if (/\bart|gallery|visual\b/.test(q)) {
+    const art = [...new Set(events.map((e) => e.category))].find((c) =>
+      /visual|art|exhibit/i.test(c)
+    );
+    if (art) {
+      filters.category = art;
+    }
+  }
+  if (/\bvcu\b/.test(q)) {
+    filters.neighborhood = events.some((e) => e.neighborhood === "Fan District")
+      ? "Fan District"
+      : "RVA Downtown";
+  }
+  if (/\b(downtown|broad street|arts district)\b/.test(q)) {
+    const d = [...new Set(events.map((e) => e.neighborhood))].find((n) =>
+      /downtown|broad|arts/i.test(n)
+    );
+    if (d) {
+      filters.neighborhood = d;
+    }
+  }
+  if (/\bjackson ward\b/.test(q)) {
+    const j = [...new Set(events.map((e) => e.neighborhood))].find((n) =>
+      /jackson/i.test(n)
+    );
+    if (j) {
+      filters.neighborhood = j;
+    }
+  }
+  if (/\bfamily|kids\b/.test(q)) {
+    filters.eqFamily = true;
+  }
+  if (/\bwheelchair|accessible\b/.test(q)) {
+    filters.eqWheelchair = true;
+  }
+  if (/\bfirst.?time|newcomer|beginner\b/.test(q)) {
+    filters.eqFirstTime = true;
+  }
+  if (/\b(friends|group)\b/.test(q) && /\bfree\b/.test(q) && /\bmusic\b/.test(q)) {
+    filters.cost = "free";
+    filters.date = "tonight6h";
+    const downtown = [...new Set(events.map((e) => e.neighborhood))].find((n) =>
+      /downtown|jackson|broad/i.test(n)
+    );
+    if (downtown) {
+      filters.neighborhood = downtown;
+    }
+  }
+
+  neighborhoodFilter.value = filters.neighborhood;
+  categoryFilter.value = filters.category;
+  costFilter.value = filters.cost;
+  dateFilter.value = filters.date;
+  eqFamily.checked = filters.eqFamily;
+  eqWheelchair.checked = filters.eqWheelchair;
+  eqFirstTime.checked = filters.eqFirstTime;
+
+  chatHint.textContent =
+    hint ||
+    "Applied filters from your message (smart rules — works offline; swap in an API later for full AI).";
+  setTimeout(() => {
+    chatHint.textContent = "";
+  }, 6000);
 }
 
 function bindFilters() {
@@ -435,6 +755,50 @@ function bindFilters() {
   dateFilter.addEventListener("change", (e) => {
     filters.date = e.target.value;
     renderEvents();
+  });
+
+  eqFamily.addEventListener("change", (e) => {
+    filters.eqFamily = e.target.checked;
+    renderEvents();
+  });
+  eqWheelchair.addEventListener("change", (e) => {
+    filters.eqWheelchair = e.target.checked;
+    renderEvents();
+  });
+  eqFirstTime.addEventListener("change", (e) => {
+    filters.eqFirstTime = e.target.checked;
+    renderEvents();
+  });
+
+  chatSearchBtn.addEventListener("click", () => {
+    applyChatQuery(chatInput.value);
+    renderEvents();
+  });
+  chatInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      applyChatQuery(chatInput.value);
+      renderEvents();
+    }
+  });
+
+  surpriseBtn.addEventListener("click", () => {
+    const pool = getFilteredEvents();
+    const fallback = getUpcomingEvents();
+    const pickFrom = pool.length ? pool : fallback;
+    if (!pickFrom.length) {
+      surpriseBanner.textContent = "No events to pick from — relax filters.";
+      return;
+    }
+    const choice = pickFrom[Math.floor(Math.random() * pickFrom.length)];
+    surpriseBanner.innerHTML = `<strong>Surprise pick:</strong> ${escapeHtml(choice.title)} — ${formatDate(
+      choice.datetime
+    )} · <a href="${choice.sourceUrl}" target="_blank" rel="noreferrer">View listing</a>`;
+    const el = document.querySelector(`[data-event-id="${choice.id}"]`);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+      el.classList.add("event-card-spotlight");
+      setTimeout(() => el.classList.remove("event-card-spotlight"), 2500);
+    }
   });
 
   tonightBtn.addEventListener("click", () => {
@@ -485,15 +849,32 @@ function bindFilters() {
     );
   });
 
+  tonightRvaBtn.addEventListener("click", () => {
+    filters.date = "tonight6h";
+    dateFilter.value = "tonight6h";
+    renderEvents();
+    resultsMeta.textContent =
+      "Tonight in RVA: showing events starting in the next 6 hours (best with live CultureWorks data).";
+  });
+
   resetBtn.addEventListener("click", () => {
     filters.neighborhood = "all";
     filters.category = "all";
     filters.cost = "all";
     filters.date = "all";
+    filters.eqFamily = false;
+    filters.eqWheelchair = false;
+    filters.eqFirstTime = false;
     neighborhoodFilter.value = "all";
     categoryFilter.value = "all";
     costFilter.value = "all";
     dateFilter.value = "all";
+    eqFamily.checked = false;
+    eqWheelchair.checked = false;
+    eqFirstTime.checked = false;
+    chatInput.value = "";
+    chatHint.textContent = "";
+    surpriseBanner.innerHTML = "";
     renderEvents();
   });
 }

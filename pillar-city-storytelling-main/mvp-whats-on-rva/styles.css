@@ -69,6 +69,141 @@ button.secondary {
   background: #475569;
 }
 
+button.accent {
+  background: #7c3aed;
+}
+
+.chat-panel {
+  margin-bottom: 1rem;
+}
+
+.chat-label {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.chat-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.chat-row input[type="search"] {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.5rem 0.6rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.4rem;
+}
+
+.chat-hint {
+  font-size: 0.86rem;
+  color: #475569;
+  margin: 0.4rem 0 0;
+  min-height: 1.2em;
+}
+
+.equity-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.equity-label {
+  font-weight: 600;
+}
+
+.inline-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  cursor: pointer;
+}
+
+.hidden-gems-panel {
+  margin-bottom: 1rem;
+}
+
+.hidden-gems-panel h2 {
+  margin: 0 0 0.25rem;
+  font-size: 1.1rem;
+}
+
+.section-sub {
+  font-size: 0.86rem;
+  color: #64748b;
+  margin: 0 0 0.6rem;
+}
+
+.surprise-banner {
+  margin: 0 0 0.75rem;
+  padding: 0.55rem 0.65rem;
+  background: #f5f3ff;
+  border: 1px solid #c4b5fd;
+  border-radius: 0.45rem;
+  font-size: 0.92rem;
+}
+
+.surprise-banner a {
+  color: #5b21b6;
+}
+
+.event-badges {
+  margin: 0.35rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.badge {
+  font-size: 0.72rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.badge-first {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.badge-family {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.badge-a11y {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.badge-budget {
+  background: #fce7f3;
+  color: #9d174d;
+}
+
+.badge-gem {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+.event-plain {
+  font-size: 0.88rem;
+  color: #475569;
+  margin: 0.4rem 0;
+  line-height: 1.4;
+}
+
+.event-card-spotlight {
+  outline: 3px solid #7c3aed;
+  box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.25);
+}
+
 .controls {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));

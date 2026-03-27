@@ -21,9 +21,25 @@
     <main class="container">
       <section id="dataStatus" class="data-status" aria-live="polite"></section>
 
+      <section class="chat-panel" aria-label="Find events in plain language">
+        <label class="chat-label" for="chatInput">Find me… (smart search)</label>
+        <div class="chat-row">
+          <input
+            type="search"
+            id="chatInput"
+            placeholder='Try: free music tonight near VCU, or under $10 family weekend'
+            autocomplete="off"
+          />
+          <button id="chatSearchBtn" type="button">Search</button>
+        </div>
+        <p id="chatHint" class="chat-hint" role="status"></p>
+      </section>
+
       <section class="action-row">
-        <button id="tonightBtn" type="button">Tonight Near Me</button>
-        <button id="resetBtn" type="button" class="secondary">Reset Filters</button>
+        <button id="tonightRvaBtn" type="button">Tonight in RVA (6 hrs)</button>
+        <button id="tonightBtn" type="button">This weekend near me</button>
+        <button id="surpriseBtn" type="button" class="accent">Surprise me</button>
+        <button id="resetBtn" type="button" class="secondary">Reset</button>
       </section>
 
       <section class="controls">
@@ -42,11 +58,12 @@
         </label>
 
         <label>
-          Cost
+          Budget
           <select id="costFilter">
             <option value="all">All</option>
             <option value="free">Free</option>
-            <option value="paid">Paid</option>
+            <option value="under10">Under $10</option>
+            <option value="paid">Paid (over $10)</option>
           </select>
         </label>
 
@@ -54,10 +71,24 @@
           Date
           <select id="dateFilter">
             <option value="all">All upcoming</option>
+            <option value="tonight6h">Tonight in RVA (next 6 hrs)</option>
             <option value="weekend">This weekend</option>
             <option value="7days">Next 7 days</option>
           </select>
         </label>
+      </section>
+
+      <section class="equity-row" aria-label="Accessibility and equity filters">
+        <span class="equity-label">Equity:</span>
+        <label class="inline-check"
+          ><input type="checkbox" id="eqFamily" /> Family friendly</label
+        >
+        <label class="inline-check"
+          ><input type="checkbox" id="eqWheelchair" /> Wheelchair accessible</label
+        >
+        <label class="inline-check"
+          ><input type="checkbox" id="eqFirstTime" /> First-time friendly</label
+        >
       </section>
 
       <section id="personalizedMessage" class="personalized-message"></section>
@@ -69,6 +100,16 @@
 
       <section id="resultsMeta" class="results-meta"></section>
       <section id="eventsList" class="events-list"></section>
+
+      <p id="surpriseBanner" class="surprise-banner" aria-live="polite"></p>
+
+      <section class="hidden-gems-panel">
+        <h2>Hidden gems</h2>
+        <p class="section-sub">
+          Smaller turnouts when attendance is listed — still source-linked; not a popularity contest.
+        </p>
+        <div id="hiddenGemsList" class="events-list"></div>
+      </section>
 
       <section class="data-panel">
         <h2>Data Transparency</h2>
